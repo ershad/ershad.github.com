@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Debian | Syntax]]></title>
+  <link href="http://ershad.github.com/blog/categories/debian/atom.xml" rel="self"/>
+  <link href="http://ershad.github.com/"/>
+  <updated>2012-07-29T23:00:35+05:30</updated>
+  <id>http://ershad.github.com/</id>
+  <author>
+    <name><![CDATA[Ershad K]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up a Debian repo in LAN]]></title>
+    <link href="http://ershad.github.com/blog/2011/04/26/setting-up-a-debian-repo-in-lan/"/>
+    <updated>2011-04-26T19:44:14+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/04/26/setting-up-a-debian-repo-in-lan</id>
+    <content type="html"><![CDATA[<p>It was really a nice experience going to <a href="http://www.mesce.ac.in">MES College Of Engineering</a>, Kuttippuram last week to attend Debian Mini Conf 2011. Met friends, made new friendships and learned many new things from there. Thanks to <a href="http://thecodecracker.com/">Jishnu ettan</a>, for giving me a 50GB Debian repo that contains all the packages of squeeze of both i686 and amd64 architectures. Today, I will explain how to set up a Debian repo (squeeze) so that it be can shared over LAN.</p>
+
+<p>First, run terminal and switch to root user.</p>
+
+<blockquote><p>$su</p></blockquote>
+
+<p>If you have the repo as an ISO image file, we need to mount it to a directory. The following command does that:</p>
+
+<blockquote><h1>mount <path-to-iso> <path-to-mount> -o loop</h1></blockquote>
+
+<p>Edit /etc/apt/source.lst and add the repo we mounted. Append the following line to the file:</p>
+
+<blockquote><p>deb file:///<mounted-path> squeeze main</p></blockquote>
+
+<p>Update the package list:</p>
+
+<blockquote><h1>apt-get update</h1></blockquote>
+
+<p>We are going to share the files using http, hence we need a webserver. To install apache:</p>
+
+<blockquote><h1>apt-get install apache2</h1></blockquote>
+
+<p>Make a symbolic link of <mounted-path> in /var/www</p>
+
+<blockquote><h1>ln -s /var/www/repo <mounted-path></h1></blockquote>
+
+<p>Done! Now add this machine as a repository in other Debian systems in LAN, edit /etc/apt/source.lst to:</p>
+
+<blockquote><p>deb http://<ip-of-server>/repo squeeze main</p></blockquote>
+
+<p>The same can be done using a FTP server. All you have to do is to make the symbolic link in FTP's configured path and use ftp:// instead of http:// in /etc/apt/source.lst. Thank you :)</p>
+]]></content>
+  </entry>
+  
+</feed>

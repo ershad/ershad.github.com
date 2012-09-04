@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="In Desktop Environments like KDE or GNOME, we have special libraries like knotify or libnotify to display notifications from various applications. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/blog/page/3/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/05/10/irssi-notification-in-terminal-using-write-command/">Irssi Notification in Terminal Using &#8216;Write Command&#8217;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-10T16:24:00+05:30" pubdate data-updated="true">May 10<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Desktop Environments like KDE or GNOME, we have special libraries like knotify or libnotify to display notifications from various applications. Some applications like Konversation has its own notification systems. But what about command line tools like Irssi? Imagine you are chatting in tty1 using irssi and doing something in tty2.How will you know if someone has mentioned you nick in channel message? Well, here is a small solution for this.</p>
+
+<p><a href="http://lewk.org/blog/2006/05/19/irssi-notify">Luke Macken</a> has written a wonderful perl script to display notifications using notify-send command in desktop environments. Thanks to open source, I tweaked the call to notify-send command to suit our tty-notification. All that you have to do is this :</p>
+
+<p>Step 1 : <a href="http://lewk.org/blog/2006/05/19/irssi-notify">Get</a> the Script and write it to a file &#8216;notify.pl&#8217;.</p>
+
+<p>Step 2 : Replace</p>
+
+<blockquote><p>system(&#8220;notify-send -i gtk-dialog-info -t 5000 &#8216;$dest->{target}&#8217; &#8216;$stripped&#8217;&#8221;);</p></blockquote>
+
+<p>With</p>
+
+<blockquote><p>system(&#8220;echo &#8216;$dest->{target}&#8217; &#8216;$stripped&#8217; | write <Your username>&#8221;);</p></blockquote>
+
+<p>Make sure you replace <Your username> with your system username.</p>
+
+<p>Step 3 : Put it in ~/.irssi/scripts/ directory.</p>
+
+<p>Step 4 : Execute the following commands in irssi:</p>
+
+<blockquote><p>/load perl
+/script load notify</p></blockquote>
+
+<p>Done, you will get notification to the latest tty to which you are logged in!
+Good luck :)</p>
+
+<p>PS: The notification that you get is not eye-candy, please adjust for it now :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/22/configure-gmail-in-mutt-easily/">Configure Gmail in Mutt Easily!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-22T04:45:06+05:30" pubdate data-updated="true">Apr 22<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s always wonderful to play with terminal. Last week, I tried to configure my Gmail account in mutt, a powerful console based mail client, using <a href="http://www.andrews-corner.org/mutt.html">this</a> tutorial. I had to create some configuration files for various related applications and executed some commands. Hence I thought it would be nice if there is any script/program to configure mutt easily by simply entering the Gmail ID and password. Here is such an application, written in C++, which will help you to configure mutt very easily. All that you need to do is install mutt and follow these steps :</p>
+
+<ol>
+<li>Download <a href="http://www.mediafire.com/?jz5drhuqw4l">this</a> file</li>
+<li>Exctract it to your home directory</li>
+<li>Execute the following commands :</li>
+</ol>
+
+
+<blockquote><p>$cd muttgconf
+$./muttgconf</p></blockquote>
+
+<p>VERY IMPORTANT: THE PROGRAM CREATES / MODIFIES MANY CONFIGURATION FILES. I WILL NOT BE RESPONSIBLE FOR ANY DAMAGE OR LOSS CAUSED BY THIS APPLICATION. USE IT UNDER YOUR RISK.</p>
+
+<p>Get its source from git://github.com/ershad/Mutt-Gmail-Conf.git  Good luck :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/30/connect-tata-docomo-internet-in-ubuntu-9-04/">Connect TATA Docomo Internet in Ubuntu 9.04</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-30T20:13:09+05:30" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s wonderful to see people browsing in their mobile phones at work places and while they travel. Many Telecom companies provide cheap GPRS / EDGE based internet connectivity which can also be connected to a computer. Here, I will explain how to connect TATA Docomo Internet service in your Ubuntu machine.</p>
+
+<p><strong>Step 1 : </strong>Connect your phone and create a new &#8216;Mobile Broadband&#8217; connection from the appeared wizard. You can Select &#8216;Airtel&#8217; in &#8216;Service Provider&#8217; which we will change to suit Docomo Internet.</p>
+
+<p><strong>Step 2</strong> : Change the &#8216;Name&#8217; in &#8216;Summary&#8217; page to &#8220;Docomo Internet&#8221;</p>
+
+<p><strong>Step 3</strong> : Go to System &#8211;> Preferences &#8211;> Network Connections, Under the &#8220;Mobile Broadband&#8221; tab, select &#8220;Docomo Internet&#8221; and click on &#8220;Edit&#8221;.</p>
+
+<p><strong>Step 4</strong> : Change APN to &#8217; TATA.DOCOMO.INTERNET &#8217; without quotes. Also, Under &#8220;IPv4&#8221; tab, select &#8220;Method&#8221; as &#8220;Automatic (PPP) addresses only&#8221;. We will give Open DNS as DNS servers, ie, in the &#8220;DNS Servers&#8221; box, give &#8216;208.67.222.222, 208.67.220.220&#8217; wihout quotes.</p>
+
+<p>Done! Now click on the antenna icon in system tray, select &#8220;Docomo Internet&#8221; from the list - You are connected! Best of Luck :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/17/salt-analysis-simulator-v1-0-released/">Salt Analysis Simulator V1.0 - Released!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-17T03:19:42+05:30" pubdate data-updated="true">Jan 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For the past few weeks, I have been coding to bring out a program to do salt analysis lab work virtually. We have salt Analysis as a part of plus two academics and it is a process of finding the anion and cation which the salt contain through a systematic procedure. We add many reagents / acids throughout the labwork and analyse the result to identify the anion and cation. I hope this program would help students to practice salt analysis at their home and would feel confident!</p>
+
+<p>The program is completely written in C++ and is intended to work on M$ DO$ platform, becuase more students are using M$ Platform including Biology-science group students. Another techincal reason is that, I have used clrscr(), gotoxy() and getchar() many times which is a troublesome work to implement in ANSI standard.</p>
+
+<p>The program works based on a new algorithm which I name it as &#8220;IntMatchReact&#8221; since the reaction process is done through a matching of integer values. While developing this software, I had a notion to implement anti-piracy for fun which was left on the way. The software is licensed under GPL and I would like you to go through the code and help in improving.</p>
+
+<p>Please post your valuable comments and improvement tips. Thank you :)</p>
+
+<p>Get SAS V1.0  <a href="http://www.mediafire.com/?j324zxddzy4">(here)</a></p>
+
+<p>Bug: i forgot to add exit function for &#8216;e&#8217; key stroke, have exams now - will upload SAS with minor corrections soon :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/12/14/the-pleasure-of-solving/">The Pleasure of Solving!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-14T17:31:13+05:30" pubdate data-updated="true">Dec 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s been a quite long since I blogged something :) May be a writer&#8217;s block<em> (</em>acronym for pure laziness,here);) Well, Last Saturday, I went to dxmk9 program conducted by NSS collage of engineering at Kottamaidhanam, Palakkad. I had registered my name for &#8216;Geek&#8217;s Paradise&#8217; competition which is basically a C programming contest. The first task was to answer some objective questions, mainly to predict the output, was not much tough. The second task was to print a number pattern like this:</p>
+
+<p>1
+1 2 1
+1 2 3 2 1
+1 2 3 4 3 2 1
+1 2 3 2 1
+1 2 1
+1</p>
+
+<p>whooo! the problem was not easy for a newbie like me (&#8216;m still in school,sir ;) ), I simply wrote some printf() statements with some ++i,etc. and escaped! Also, I had no much time to think, I had promised to return home before 1 PM.</p>
+
+<p>When I reached home, a sudden thought flashed across my mind &#8220;Why shouldn&#8217;t I give a try ?&#8221;. I booted my ubuntu system ( &#8216;m eagerly waiting to get Fedora in hands), took newly installed Netbeans IDE and started trying. After some time - LOL :) !! It worked!! The program asked for an integer input and printed the pattern exactly the way it&#8217;s meant to be! I know, this is a small problem and has nothing of great speciality or something, but don&#8217;t know why - The output gave me some moments of rejoice! A small pleasure of coding :) Ha ha, I would like to share that code with you :)</p>
+
+<pre><code>&lt;span style="color:#b22222;"&gt;/*
+ *      121.c
+ *
+ *      Copyright 2009 Ershad K &lt;ershad92@gmail.com&gt;
+ *
+ *      Licensed under GPL Version 3
+ */&lt;/span&gt;
+
+&lt;span style="color:#a020f0;"&gt;#include &lt;stdio.h&gt;&lt;/span&gt;
+
+&lt;strong&gt;&lt;span style="color:#4169e1;"&gt;&lt;a name="ain"&gt;&lt;/a&gt;main()&lt;/span&gt;&lt;/strong&gt; {
+
+    int n;
+    int i = 1;
+    int j = 1;
+    printf(&lt;span style="color:#666666;"&gt;"Enter a number: "&lt;/span&gt;);
+    scanf(&lt;span style="color:#666666;"&gt;"%d"&lt;/span&gt;,&amp;n);
+
+    // Increment....
+    &lt;span style="color:#4169e1;"&gt;for&lt;/span&gt; (;i &lt;= n; i++ )
+    {
+        &lt;span style="color:#4169e1;"&gt;for&lt;/span&gt;(j = 1; j &lt;= i; j++)
+        {
+            printf(&lt;span style="color:#666666;"&gt;" %d"&lt;/span&gt;,j);
+        }
+        --j;
+
+        &lt;span style="color:#4169e1;"&gt;for&lt;/span&gt; (--j; j &gt;=1; j--)
+        {
+            printf(&lt;span style="color:#666666;"&gt;" %d"&lt;/span&gt;,j);
+        }
+        printf(&lt;span style="color:#666666;"&gt;"n"&lt;/span&gt;);
+    }
+
+    // Decrement....
+
+     &lt;span style="color:#4169e1;"&gt;for&lt;/span&gt; (i = n-1;i &gt;= 1; i-- )
+    {
+        &lt;span style="color:#4169e1;"&gt;for&lt;/span&gt;(j = 1; j &lt;= i; j++)
+        {
+            printf(&lt;span style="color:#666666;"&gt;" %d"&lt;/span&gt;,j);
+        }
+        --j;
+
+        &lt;span style="color:#4169e1;"&gt;for&lt;/span&gt; (--j; j &gt;=1; j--)
+        {
+            printf(&lt;span style="color:#666666;"&gt;" %d"&lt;/span&gt;,j);
+        }
+        printf(&lt;span style="color:#666666;"&gt;"n"&lt;/span&gt;);
+    }
+
+}
+
+Patches are always welcome :) All the best, nice day!
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/09/20/c-program-to-tweet/">C++ Program to Tweet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-20T16:41:59+05:30" pubdate data-updated="true">Sep 20<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s very interesting to play with C++ and if it is in GNU/Linux, lots of tools like &#8216;wget&#8217;, &#8216;grep&#8217;,etc. are there to help us in time. Here is a simple C++ snippet which tweets directly to your time line. Feel free to add more features and would be great if you could share it with me too :)</p>
+
+<blockquote><pre><code>/*
+ *      shell-tweet.cpp
+ *
+ *      Copyright 2009 Ershad K  ershad92@gmail.com
+ *      Licensed under GPL Version 3
+ *
+ *      Please change USERNAME, PASSWORD and compile with g++
+ *      To compile - g++ shell-tweet.cpp
+ *      To execute - ./a.out
+ */
+</code></pre>
+
+<h1>include <iostream></h1>
+
+<h1>include &lt;string.h></h1>
+
+<h1>include &lt;stdlib.h></h1></blockquote>
+
+<p>using namespace std;</p>
+
+<p>int main()
+{
+char name[] = &#8220;username&#8221;, password[] = &#8220;password&#8221;, status[500], cmd[500];</p>
+
+<p>char sym[] = {char(34),&#8221;};</p>
+
+<p>again: cout &lt;&lt; &#8220;n Status: &#8220;;
+fgets (status,140,stdin);</p>
+
+<p>cout &lt;&lt; &#8220;n Length = &#8221; &lt;&lt; strlen(status);</p>
+
+<p>if (strlen(status) > 139)
+{
+cout &lt;&lt; &#8221; Exceeds 140 character limit, Type again n&#8221;;
+goto again;
+}
+else
+{</p>
+
+<p>strcpy(cmd,&#8221;wget -nv &#8211;keep-session-cookies &#8211;http-user=&#8221;);</p>
+
+<p>strcat(cmd,name);
+strcat(cmd,&#8221; &#8211;http-password=&#8221;);
+strcat(cmd,password);
+strcat(cmd,&#8221; &#8211;post-data=&#8221;);
+strcat(cmd,sym);
+strcat(cmd,&#8221;status=&#8221;);
+strcat(cmd,status);
+strcat(cmd,sym);
+strcat(cmd,&#8221; http://twitter.com:80/statuses/update.xml&#8221;);</p>
+
+<p>system(cmd);</p>
+
+<p>cout &lt;&lt; &#8220;n Done&#8221;;
+}
+return 0;
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/09/05/easy-clarity-connect-easily/">Easy Clarity - Connect Easily!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-05T14:51:26+05:30" pubdate data-updated="true">Sep 5<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&#8216;Disconnection&#8217; is a routine process in dial up internet. Here is an C++ snippet which dials BSNL WLL Clarity without asking for password again and again. It automatically closes on disconnection with a beep sound.</p>
+
+<pre><code>/*
+ *      easyclarity.cpp
+ *
+ *      Copyright 2009 Ershad K  ershad92@gmail.com
+ *      Licensed under GPL Version 3
+ *
+ *      Please change USERNAME, PASSWORD and compile with g++
+ *      To compile - g++ easyclarity.cpp
+ *      To execute - ./a.out
+ */
+
+#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+using namespace std;
+
+int main ()
+{
+    char username[] = "USERNAME";
+    char password[] = "PASSWORD";
+    puts("n EasyClarity - Connect wisely!  www.ershadk.wordpress.comnn");
+    ofstream myfile;
+    system("sudo wvdialconf");
+    myfile.open ("/etc/widial.conf");
+        myfile &lt;&lt; "[Dialer Defaults]nInit1 = ATZnInit2 = ATQ0 V1 E1 S0=0 "
+               &lt;&lt; "&amp;C1 &amp;D2 +FCLASS=0nInit3 = at+crm=1;+cmux=1;+cps=33;+cta=0"
+               &lt;&lt; "nModem Type = Analog ModemnISDN = 0nPhone = #777nModem"
+               &lt;&lt; " = /dev/ttyUSB0nUsername = "&lt;&lt;username&lt;&lt;"nPassword = "
+               &lt;&lt;password&lt;&lt;"nBaud = 460800nStupid Mode = 1nAuto DNSnCheck"
+                &lt;&lt;" Def Route";
+    myfile.close();
+    system("sudo wvdial");
+    cout &lt;&lt; "a";
+    return 0;
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/08/25/how-to-connect-bsnl-clarity-in-ubuntu-9-04/">How to Connect BSNL Clarity in Ubuntu 9.04 ?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-25T11:45:55+05:30" pubdate data-updated="true">Aug 25<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Though we have many tools to connect BSNL Clarity in Linux Systems, unfortunately they don&#8217;t work in ubuntu 9.04 and in other lastest OS&#8217;. Here, i will explain how to get connected with BSNL clarity in ubuntu 9.04.</p>
+
+<p>First, you need to edit the grub and add a line to ubuntu&#8217;s kernel. Follow the steps to do that:</p>
+
+<blockquote><p>sudo gedit /boot/grub/menu.lst</p></blockquote>
+
+<p>Modify the ubuntu&#8217;s boot configuration to like this :</p>
+
+<p>title  Ubuntu 9.04
+uuid  b744ea84-c1b7-4519-9223-3bb99103d42f
+kernel  /boot/vmlinuz-2.6.28-11-generic root=UUID=b744ea84-c1b7-4519-9223-3bb99103d42f ro quiet splash <strong>usbserial.vendor=0x15eb usbserial.product=0x0001</strong>
+initrd  /boot/initrd.img-2.6.28-11-generic</p>
+
+<p>I simply added &#8217;<strong>usbserial.vendor=0x15eb usbserial.product=0x0001&#8217; </strong>to the kernel.</p>
+
+<p>Next step is to install wvdial. Since the ubuntu 9.04 CD edition doesn&#8217;t have wvdial by default, we need to install it manually. Follow the steps to install it :</p>
+
+<ol>
+<li><p>Download <strong><a href="http://groups.google.com/group/cppworld/web/wvdial.zip">this</a></strong> file</p></li>
+<li><p>Extract it in your home directory</p></li>
+<li><p>Give the following commands in terminal</p></li>
+</ol>
+
+
+<blockquote><p>cd wvidal</p></blockquote>
+
+<p>sudo dpkg -i *.deb</p>
+
+<ol>
+<li>Restart the computer</li>
+</ol>
+
+
+<p>It&#8217;s done ! Now you can browse like the older versions of ubuntu by executing Mr.Dipin Krishna&#8217;s executable (./bsnlclarity in terminal after copying it in your home directory) . You can get it <strong><a href="http://blog.dipinkrishna.info/2008/10/easy-way-to-access-internet-through.html">here</a></strong>. Good Luck :)</p>
+
+<p><strong>
+</strong></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/08/checknet-v1-0-alpha-gnulinux-only/">Checknet V1.0 Alpha (GNU/Linux Only)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-08T15:35:02+05:30" pubdate data-updated="true">Jun 8<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Checknet is an application developed for slow Internet connection(especially Dial-up) users who likes to turn off monitor while downloading some files from the web. Since the monitor is switched off or else if you are working with some other application, you wouldn&#8217;t know whether the download is interrupted by connection erros. This application gives you beep-beep alerts when the connection gets dissconnected or the download is interrupted. You even need not turn your speakers ON for alerts, the alerts are from CPU :).</p>
+
+<p>This programs is working based on the amount of received-data. It wil update the record every 2 seconds, if there is no change in the total recieved data, it just starts giving you alerts.</p>
+
+<p>Checknet was initially created just for my personal use, hence it doesn&#8217;t feature a good interface or other extra elements. Feel free to edit it to suit your style.</p>
+
+<p>Thanks to Ragsagar ettan and Sarath ettan :)</p>
+
+<p><a href="http://sites.google.com/site/syntaxclub/downloads/checknet?attredirects=0">Click here for the executable file</a> | <a href="http://sites.google.com/site/syntaxclub/checknet-v-1-0">Click here for the source code</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/15/setting-up-malayalam-and-installing-swanalekha-in-sabayon-4/">Setting Up Malayalam and Installing Swanalekha in Sabayon 4</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-15T17:33:22+05:30" pubdate data-updated="true">May 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Though the Sabayon 4 DVD release comes with SCIM , it&#8217;s not possible read Malayalam or write using swanalekha by the usual methods. Let&#8217;s see how to do it.</p>
+
+<p>Type in terminal:</p>
+
+<p>$sudo bash</p>
+
+<h1>wget http://ershad.freehostia.com/download/AnjaliOldLipi.ttf</h1>
+
+<h1>cp AnjaliOldLipi.ttf /user/share/fonts/</h1>
+
+<p>Now you can read Malayalam :), To type using swanalekha, do the following :</p>
+
+<h1>wget http://ershad.freehostia.com/download/install-swanalekha.tar.gz</h1>
+
+<h1>tar -xvf install-swanalekha.tar.gz</h1>
+
+<p>It&#8217;s done, Right click the text box, select &#8220;SCIM input method&#8221; and start typing !!</p>
+
+<p><img src="http://ershadk.com/blog/wp-content/uploads/2009/05/screenshot.png" alt="Select SCIM from right click menu" /></p>
+
+<p>Unfortunately this is not working in firefox. Please inform me if there is any mistake or bug. Thanks to SMC :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error &#8220;[FATAL] failed to allocate memory&#8221; in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of &#8216;Read it later&#8217; list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

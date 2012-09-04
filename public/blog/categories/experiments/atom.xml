@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Experiments | Syntax]]></title>
+  <link href="http://ershad.github.com/blog/categories/experiments/atom.xml" rel="self"/>
+  <link href="http://ershad.github.com/"/>
+  <updated>2012-09-05T00:00:24+05:30</updated>
+  <id>http://ershad.github.com/</id>
+  <author>
+    <name><![CDATA[Ershad K]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python script for automatic synchronisation of 'Read it later' list and webpage]]></title>
+    <link href="http://ershad.github.com/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/"/>
+    <updated>2011-11-16T20:28:28+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage</id>
+    <content type="html"><![CDATA[<p>[caption id="attachment_461" align="alignright" width="229" caption="Adding to 'Read it later' list"]<a href="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png"><img src="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png" alt="" /></a>[/caption]</p>
+
+<p>One of the powerful features of firefox is that it has thousands of useful addons. We are going to deal with such an addon - <a href="http://readitlaterlist.com/">Read it later</a>. It allows us to book mark page to read later with just a click. I was happy living with it.</p>
+
+<p>But on one fine day, <a href="http://2x3idiots.blogspot.com/">Hrishiettan</a> told me about sharing the links we read and its advantages. Sharing links will help many people to find interesting articles easily and it will also act as a link-index in case if we want to refer it again. The idea is really good and he told he would start working on a php app.</p>
+
+<p>On another day, I told about this to <a href="http://raghesh.wordpress.com/">Raghesh sir</a>. He told there's an option to export our list to html in 'Read it later'. That's it! They have an API too! Got the API key from their website, cleared all existing links as they contain irrelevant news links, and wrote following script. It now updates the links in <a href="http://ershadk.com/links/">http://ershadk.com/links/</a> every 5 minutes automatically from my 'Read it later' list. Thank you :)</p>
+
+<p>ps: The standard way of xml parsing didn't work, that's why I wrote it rude :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A python script to generate SQL queries for importing links/blogroll in another wordpress blog]]></title>
+    <link href="http://ershad.github.com/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/"/>
+    <updated>2011-11-13T13:17:13+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog</id>
+    <content type="html"><![CDATA[<p>Here's the problem: There are 30 precious links in my <a href="http://ershadk.wordpress.com">old blog</a> under blogroll. Exporting feature of wordpress does not export the contents in blogroll/links. The task is to import those links in this new blog with minimum effort.</p>
+
+<p>Well, Adding 30 links manually ain't difficult - it may take a maximum of 15 minutes to complete the task. But it's too repetitive and boring. The best way is obviously writing a script.</p>
+
+<p>Here's a small python script that generates SQL queries to insert old blogroll items in new database. It will ask for old blog URL and new database name - that's it, it will search your old blog for blogroll links and print INSERT statements in stdout suitable for executing in phpmyadmin or directly in mysql shell :)</p>
+
+<p>Hope you like it, Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Anagram Solver in C]]></title>
+    <link href="http://ershad.github.com/blog/2011/09/18/anagram-solver-in-c/"/>
+    <updated>2011-09-18T16:58:26+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/09/18/anagram-solver-in-c</id>
+    <content type="html"><![CDATA[<p>Hi, Here's a small anagram solver written in C. It works based on generating permutations of given string and comparing them using a dictionary. For fast search in dictionary, the program first creates an index of the starting location of each alphabet. It takes a few minutes to process long words.</p>
+
+<p><a href="https://github.com/ershad/Snippets/blob/master/anagramSolver.c">Here's the source code</a>. Suggestions are always welcome, Greetings :)</p>
+
+<p>Update: There's a little problem in using the term 'anagram solver' here. An anagram solver finds words from another valid word - But this program finds words from the characters of given valid/invalid word. Thanks to <a href="http://technikhil.wordpress.com">technikhil</a> for the info :)</p>
+
+<p>Note: Realized that this implementation of anagram solver is inefficient. Will post a better one soon.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A cryptographic tool that converts weak password into a strong password before encrypting]]></title>
+    <link href="http://ershad.github.com/blog/2011/06/10/a-cryptographic-tool-that-converts-weak-password-into-a-strong-password-before-encrypting/"/>
+    <updated>2011-06-10T21:26:51+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/06/10/a-cryptographic-tool-that-converts-weak-password-into-a-strong-password-before-encrypting</id>
+    <content type="html"><![CDATA[<p>Here's a small encryption/decryption tool that works based on AES algorithm. No matter how weak your password is, the program converts it to a 32 digits hexadecimal number before encrypting. This is achieved by finding the MD5 hash of the password using hashlib python module. This hash is used to encrypt the file.</p>
+
+<p><a href="https://github.com/ershad/Snippets/blob/master/crypto.py">The source file is here</a></p>
+
+<p>The idea in my mind while writing this program was this:</p>
+
+<p>Suppose a cracker gets an encrypted file and he figures out it's encrypted using AES somehow. Then he starts brute force attack on it to find the key and extract information. If the password used to encrypt that file is weak and if it's based on a dictionary word, the cracker can easily figure out the password. Hence the password given by the user must be made stronger by the encrypting program. And the best way to make a password strong is by using digest algorithms since it's unique to a string.</p>
+
+<p>What do you think? Am I wrong? Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A small and simple note taking app]]></title>
+    <link href="http://ershad.github.com/blog/2011/05/26/a-small-and-simple-note-taking-app/"/>
+    <updated>2011-05-26T03:21:49+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/05/26/a-small-and-simple-note-taking-app</id>
+    <content type="html"><![CDATA[<p>Wrote a small python script that can be used with your favorite text editor as a simple note taking application. Hope you like it, suggestions are always welcome :)</p>
+
+<p><a href="https://github.com/ershad/Snippets/blob/master/note.py">Here's the code!</a></p>
+
+<p>Thank you :)</p>
+]]></content>
+  </entry>
+  
+</feed>

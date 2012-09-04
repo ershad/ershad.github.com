@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Talks | Syntax]]></title>
+  <link href="http://ershad.github.com/blog/categories/talks/atom.xml" rel="self"/>
+  <link href="http://ershad.github.com/"/>
+  <updated>2012-09-05T00:00:24+05:30</updated>
+  <id>http://ershad.github.com/</id>
+  <author>
+    <name><![CDATA[Ershad K]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[It was really a wonderful experience at MES :)]]></title>
+    <link href="http://ershad.github.com/blog/2011/07/16/it-was-really-a-wonderful-experience-at-mes/"/>
+    <updated>2011-07-16T14:59:07+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/07/16/it-was-really-a-wonderful-experience-at-mes</id>
+    <content type="html"><![CDATA[<p>Yesterday, I went to <a href="http://mesce.ac.in">MES College of Engineering</a> to deliver a small talk on programming and free software, it was entirely a new experience for me. A bigger crowd than expected was present. It went fine :) Thanks to <a href="http://raghesh.wordpress.com/">Raghesh sir</a>, Raju sir, S@IT and to friends there :)</p>
+
+<p>I'm happy to <a href="http://www.slideshare.net/ershadk/programming-is-fun-an-intro-to-free-software">share my little slides</a>. It was created according to numerous suggestions by Raghesh sir. For fun, the presentation was started with a SMS trigger from audience :) The code for that is like 'get-thing-done' and doesn't have the quality to upload. It's developed using python with gammu module. Please feel free to tell me if you want to have a look at the code.</p>
+
+<p>Attribution: 'Input -> Fun -> Output' is an idea got from Niyam Bhushan during his talk at NIT Calicut on FOSS Meet day.</p>
+
+<p>Thank you :)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Clarity | Syntax]]></title>
+  <link href="http://ershad.github.com/blog/categories/clarity/atom.xml" rel="self"/>
+  <link href="http://ershad.github.com/"/>
+  <updated>2012-07-29T23:00:35+05:30</updated>
+  <id>http://ershad.github.com/</id>
+  <author>
+    <name><![CDATA[Ershad K]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Easy Clarity - Connect Easily!]]></title>
+    <link href="http://ershad.github.com/blog/2009/09/05/easy-clarity-connect-easily/"/>
+    <updated>2009-09-05T14:51:26+05:30</updated>
+    <id>http://ershad.github.com/blog/2009/09/05/easy-clarity-connect-easily</id>
+    <content type="html"><![CDATA[<p>'Disconnection' is a routine process in dial up internet. Here is an C++ snippet which dials BSNL WLL Clarity without asking for password again and again. It automatically closes on disconnection with a beep sound.</p>
+
+<pre><code>/*
+ *      easyclarity.cpp
+ *
+ *      Copyright 2009 Ershad K  ershad92@gmail.com
+ *      Licensed under GPL Version 3
+ *
+ *      Please change USERNAME, PASSWORD and compile with g++
+ *      To compile - g++ easyclarity.cpp
+ *      To execute - ./a.out
+ */
+
+#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+using namespace std;
+
+int main ()
+{
+    char username[] = "USERNAME";
+    char password[] = "PASSWORD";
+    puts("n EasyClarity - Connect wisely!  www.ershadk.wordpress.comnn");
+    ofstream myfile;
+    system("sudo wvdialconf");
+    myfile.open ("/etc/widial.conf");
+        myfile &lt;&lt; "[Dialer Defaults]nInit1 = ATZnInit2 = ATQ0 V1 E1 S0=0 "
+               &lt;&lt; "&amp;C1 &amp;D2 +FCLASS=0nInit3 = at+crm=1;+cmux=1;+cps=33;+cta=0"
+               &lt;&lt; "nModem Type = Analog ModemnISDN = 0nPhone = #777nModem"
+               &lt;&lt; " = /dev/ttyUSB0nUsername = "&lt;&lt;username&lt;&lt;"nPassword = "
+               &lt;&lt;password&lt;&lt;"nBaud = 460800nStupid Mode = 1nAuto DNSnCheck"
+                &lt;&lt;" Def Route";
+    myfile.close();
+    system("sudo wvdial");
+    cout &lt;&lt; "a";
+    return 0;
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

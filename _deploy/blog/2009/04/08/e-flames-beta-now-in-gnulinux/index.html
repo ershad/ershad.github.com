@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>e-FLAMES Beta now in  GNU/Linux  :) - Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="Hello friends, I&#8217;m glad to present the Beta version of e-FLAMES for GNU/Linux before you. Thanks to Jesse, for his valuable header file with &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/blog/2009/04/08/e-flames-beta-now-in-gnulinux/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">e-FLAMES Beta Now in GNU/Linux :)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-08T19:02:23+05:30" pubdate data-updated="true">Apr 8<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Hello friends,</p>
+
+<p>I&#8217;m glad to present the Beta version of e-FLAMES for GNU/Linux before you. Thanks to<a href="http://thejpf-integratinglife.blogspot.com/"> Jesse</a>, for his valuable header file with getch() function in GNU/Linux. I have made minor changes in this version and now, it&#8217;s licensed under GPL V3. The program still has some errors when strings with special characters are given as input. Please help me correct those and make this program bug-free. I expect to release the final version before the end of this month. Till then, please try this program and give me your valuable comments.</p>
+
+<p><a href="http://mail-egang.googlegroups.com/web/e-FLAMES+Beta+GNU.zip?gda=jXm4zUcAAACPZAvJ0GuJ497RSEn-J1UHhL8cqY2_UDrHAF55c7noWAY_7ushPDsjZ7adFVbRW2AbzHe87USdioT9uNiA7PHaeV4duv6pDMGhhhZdjQlNAw&amp;gsc=XDIH_wsAAAAtN-4d-Q2SKH2iog9cNCh2">(Click here to download GNU/Linux executable)</a></p>
+
+<p>Here are the screenshots :</p>
+
+<p>[gallery link=&#8221;file&#8221;]</p>
+
+<p>The source code is written in C++ using Geany as IDE. The source code is given below &#8230;</p>
+
+<p>/<em>
+* e-FLAMES.cpp
+*
+* Copyright 2009 Ershad K <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x65;&#x72;&#x73;&#x68;&#97;&#x64;&#57;&#x32;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#101;&#x72;&#115;&#x68;&#x61;&#x64;&#57;&#50;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#109;</a>
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+* MA 02110-1301, USA.
+</em>/</p>
+
+<p>//Including header files..</p>
+
+<h1>include <iostream></h1>
+
+<h1>include &lt;string.h></h1>
+
+<h1>include &lt;stdlib.h> //for system() function</h1>
+
+<h1>include &#8220;jesse_conio.h&#8221;</h1>
+
+<p>char name1[30], name2[30]; //declaring global name variables</p>
+
+<p>using namespace std; // dunno what&#8217;s this, please tell me..</p>
+
+<p>void message(); // for general headings and texts</p>
+
+<p>void getnames(); // for names input</p>
+
+<p>void copyright(); //print copyright notice</p>
+
+<p>void changecase( char names[]); //change case function</p>
+
+<p>void removespecial(char name_1[]); //remove spaces</p>
+
+<p><a href="http://sites.google.com/site/syntaxclub/e-flames-beta-gnu">(Click here to view full source)</a> <a href="http://mail-egang.googlegroups.com/web/e-FLAMES+Beta+GNU.zip?gda=jXm4zUcAAACPZAvJ0GuJ497RSEn-J1UHhL8cqY2_UDrHAF55c7noWAY_7ushPDsjZ7adFVbRW2AbzHe87USdioT9uNiA7PHaeV4duv6pDMGhhhZdjQlNAw&amp;gsc=XDIH_wsAAAAtN-4d-Q2SKH2iog9cNCh2"> (Click here to download GNU/Linux executable)</a></p>
+
+<p>This source code can be used in windows also with a few changes in headers and can be succesfully compiled. Please add more features and it would be better if any one works to bring out a GUI version of e-FLAMES. Hope you would like this one and feel free to add your suggestions and opinions as comments. Best Wishes</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ershad K</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-08T19:02:23+05:30" pubdate data-updated="true">Apr 8<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-/'>C++</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ershad.github.com/blog/2009/04/08/e-flames-beta-now-in-gnulinux/" data-via="" data-counturl="http://ershad.github.com/blog/2009/04/08/e-flames-beta-now-in-gnulinux/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/04/05/e-flames-my-latest-cpp-project/" title="Previous Post: "e-FLAMES" - my latest C++ project">&laquo; "e-FLAMES" - my latest C++ project</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/05/12/a-journey-with-sabayon/" title="Next Post: A journey with sabayon...">A journey with sabayon... &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of 'Read it later' list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

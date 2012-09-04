@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="I&#8217;m very happy to release my little hobby project myfest.in, a place where you can find and share campus fests across India.The backend is &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest. In - a Web App to Find and Share Campus Fest and Events!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-31T21:41:44+05:30" pubdate data-updated="true">May 31<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://myfest.in"><img src="http://ershadk.com/blog/wp-content/uploads/2012/05/myfest.png" alt="" /></a>I&#8217;m very happy to release my little hobby project <a href="http://myfest.in">myfest.in</a>, a place where you can find and share campus fests across India.The backend is written in ruby using Ruby on Rails framework and I&#8217;ve been having a nice time developing it for the last few weekends :)</p>
+
+<p>The initial spark to build it was from the experience thatI&#8217;ve been going to campus fests in Kerala and realized the necessity for a simpler way of sharing the information regarding fests. Many times I&#8217;ve seen students from other states (like from Rajasthan and Haryana) attending the fests in Kerala and I wondered how they got the necessary information. Most of them told they either got a personal invitation or came to know about fest from some website. I thought about the thousands of students who were missing the opportunities because they didn&#8217;t come to know about it on time. Also I&#8217;ve seen some campus fests without much of an outside participation. They were not able to promote the fest to interested students. I wanted to make a little solution for this and hence built <a href="http://myfest.in">myfest.in</a>. Thanks to <a href="http://arkarjun.wordpress.com">Arjun</a> for the <a href="http://myfest.in">myfest.in</a> logo :)</p>
+
+<p>To those who are interested in the technologies <a href="http://myfest.in">myfest.in</a> uses: It&#8217;s written in Ruby on Rails with MySQL database and a little jQuery. It runs in a dedicated VPS with nginx and passenger.</p>
+
+<p>I hope you liked it. If you happen to find any bug, please report it to myfest@myfest.in. Thank you :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x Error &#8220;[FATAL] Failed to Allocate Memory&#8221; in OS X Lion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-10T10:21:46+05:30" pubdate data-updated="true">May 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This error happens when mysql2 gem is either installed for some other version of mysql or when it cannot find required dynamic library. To fix this error, uninstall mysql2 gem and install as follows
+[code]$ env ARCHFLAGS=&#8221;-arch x86_64&#8221; gem install mysql2 -v=&#8217;0.3.11&#8217; &#8211; &#8211;with-mysql-dir=/usr/local/mysql &#8211;with-mysql-lib=/usr/local/mysql/lib &#8211;with-mysql-include=/usr/local/mysql/include &#8211;with-mysql-config=/usr/local/mysql/bin/mysql_config[/code]
+Please change &#8216;/usr/local/mysql&#8217; to your mysql installation path. Thank you.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set Up Rails 3.2.2 With Passenger, Rvm and Ngnix</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-06T01:08:55+05:30" pubdate data-updated="true">Apr 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby on Rails is becoming more feature rich and powerful by every release.Naturallythe steps to get it working in production environment are also being changed. I&#8217;ve been trying to set up Rails 3.2.2 for a while and here&#8217;s the method that finally worked. This method should work for the new Rails release, 3.2.3 too.</p>
+
+<p><strong>Install Server Operating System</strong></p>
+
+<p>We have a large pool of operating systems to select for our server. Though Debian Squeeze and CentOS have proved their stability in serving rails applications, I would prefer a LTS version of Ubuntu Server edition. I did a small survey, Many experienced programmers said they are using Ubuntu server as it&#8217;s easy to maintain, Packages are in plenty and has better stability.Also Canonical promises to give us 5 years of support for LTS edition operating systems. Current LTS edition is Ubuntu Server 10.04</p>
+
+<p><strong>Install RVM</strong></p>
+
+<p>Ruby Version Manager(RVM) helps to managemultipleruby versions in a single machine. RVM helps us to quickly switch Ruby/Rails versions. Before installing RVM, we need to install git, curl and autoconf. Use the following command to do it:</p>
+
+<p>[code]$ sudo apt-get -y install git-core curl autoconf[/code]</p>
+
+<p>Then install and configure RVM,</p>
+
+<p>[code]</p>
+
+<p>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</p>
+
+<p>$ echo &#8216;[[ -s &#8220;$HOME/.rvm/scripts/rvm&#8221; ]] &amp;&amp; . &#8220;$HOME/.rvm/scripts/rvm&#8221; # Load RVM function&#8217; >> ~/.bash_profile</p>
+
+<p>[/code]</p>
+
+<p>Source ~/.bash_profile to add rvm as a function to shell</p>
+
+<p>[code]$ source ~/.bash_profile[/code]</p>
+
+<p><strong>Install Ruby</strong></p>
+
+<p>Before installing Ruby, we need to install all dependency packages. The following command lists the dependency packages.</p>
+
+<p>[code]$ rvm requirements [/code]</p>
+
+<p>We can see a line with lots of package names, something like the following. Execute it directly with sudo in shell to install packages:</p>
+
+<p>[code]</p>
+
+<p>sudo /usr/bin/apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion[/code]</p>
+
+<p>Next step is to install Ruby.Current latest version of Ruby 1.9.3. Let&#8217;s install it</p>
+
+<p>[code]$ rvm install 1.9.3[/code]</p>
+
+<p>It will take a few minutes to fetch source, configure and compile.</p>
+
+<p>After completing installation, we can set 1.9.3 as the default version:</p>
+
+<p>[code]$rvm use 1.9.3 &#8211;default[/code]</p>
+
+<p><strong>Install passenger</strong></p>
+
+<p>Passenger is a free module for Apache and nginx to run Ruby applications. Luckily it&#8217;s available as a Ruby gem and it&#8217;s easy to install and configure it.</p>
+
+<p>Install passenger gem</p>
+
+<p>[code]$ gem install passenger[/code]</p>
+
+<p>Install and configure nginx</p>
+
+<p>[code]$ rvmsudo passenger-install-nginx-module[/code]</p>
+
+<p>This command downloads nginx source code, builds it and finally configures passenger for us. Default location of ngnix is /opt/nginx and we can find the configuration in /opt/nginx/conf/nginx.conf</p>
+
+<p>If you open nginx configuration, you can see the following lines have been already added into it in &#8216;http&#8217; configuration:</p>
+
+<p>[code]</p>
+
+<p>passenger_root /home/ershad/.rvm/gems/ruby-1.9.3-p125/gems/passenger-3.0.11;
+passenger_ruby /home/ershad/.rvm/wrappers/ruby-1.9.3-p125/ruby;</p>
+
+<p>[/code]</p>
+
+<p><strong>Install Rails</strong></p>
+
+<p>Before installing rails, we will create a gemset. Gemset is feature of RVM where we can create multiple gemset to store different gems of different versions.</p>
+
+<p>Let&#8217;s create a gemset for Rails 3.2.2</p>
+
+<p>[code]</p>
+
+<p>$ rvm gemset create rails322</p>
+
+<p>$ rvm gemset use rails322</p>
+
+<p>[/code]</p>
+
+<p>Installing rails is pretty straight forward.</p>
+
+<p>[code]$ gem install rails -v 3.2.2[/code]</p>
+
+<p>If you are not interested in the documentation that comes along with rails gem, use the following command instead</p>
+
+<p>[code]$ gem install rails -v 3.2.2&#8211;no-ri &#8211;no-rdoc [/code]</p>
+
+<p><strong>Install nginx init script</strong></p>
+
+<p>nginx init script by Jason Giedymin helps us to administerweb server easily.</p>
+
+<p>[code]
+$ cd
+$ git clone git://github.com/jnstq/rails-nginx-passenger-ubuntu.git
+$ sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx
+$ sudo chown root:root /etc/init.d/nginx
+[/code]</p>
+
+<p><strong>Deploying application</strong>
+Let&#8217;s store all rails applications under /var/rails_apps/ directory. Let&#8217;s make such a folder
+[code]
+$ sudo mkdir -p /var/rails_apps
+$ sudo chmod 777 /var/rails_apps/ #giving full file permissions
+[/code]
+Let&#8217;s create a sample rails application in rails_apps directory
+[code]
+$ cd /var/rails_apps
+$ rails new helloworld
+$ cd helloworld
+$ vim Gemfile # and uncomment the line to include &#8216;therubyracer&#8217; gem. We need a javascript runtime
+$ bundle install
+$ bundle exec rake assets:precompile #Precompile assets to public/ dir</p>
+
+<p>[/code]
+Next step is point ngnix to this location. Add the following snippet in /opt/nginx/conf/nginx.conf
+[code]</p>
+
+<p>server {
+listen 80;
+server_name example.com;
+rails_env production;
+root /var/rails_apps/helloworld/public; # &lt;&#8212; be sure to point to &#8216;public&#8217;!
+passenger_enabled on;
+}</p>
+
+<p>[/code]</p>
+
+<p>Restart the server</p>
+
+<p>[code] sudo /etc/init.d/nginx restart[/code]</p>
+
+<p>Your application must be alive and running now! :)</p>
+
+<p><strong>Points to remember</strong></p>
+
+<p>1) Rails application doesn&#8217;t get updated when we change the code. This is because we need to restart passengerexplicitly</p>
+
+<p>Restarting passenger is easy, we just have to create a file &#8216;restart.txt&#8217; in tmp/ dir of the application. For example</p>
+
+<p>[code]</p>
+
+<p>$ cd /var/rails_apps/helloworld</p>
+
+<p>$ touch tmp/restart.txt</p>
+
+<p>[/code]</p>
+
+<p>2) Always precompile assets after generating controller or scaffold</p>
+
+<p>3) Make sure you are migrating in &#8216;production&#8217; environment. This can be done using the following command.</p>
+
+<p>[code] rake db:migrate RAILS_ENV=production[/code]</p>
+
+<p>4) When you get errors related to routes, check the list of all routes</p>
+
+<p>[code] $ rake routes [/code]</p>
+
+<p>5) When something goes wrong, see log/production.log</p>
+
+<p>6) If you happen to get passenger errors related to missing gems, just add those gems in Gemfile and use the following command</p>
+
+<p>[code] $bundle install &#8211;path vendor/bundle [/code]</p>
+
+<p>That&#8217;s it. Happy hacking with Ruby on Rails. Thank you.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python Script for Automatic Synchronisation of &#8216;Read It Later&#8217; List and Webpage</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-16T20:28:28+05:30" pubdate data-updated="true">Nov 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[caption id=&#8221;attachment_461&#8221; align=&#8221;alignright&#8221; width=&#8221;229&#8221; caption=&#8221;Adding to &#8216;Read it later&#8217; list&#8221;]<a href="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png"><img src="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png" alt="" /></a>[/caption]</p>
+
+<p>One of the powerful features of firefox is that it has thousands of useful addons. We are going to deal with such an addon - <a href="http://readitlaterlist.com/">Read it later</a>. It allows us to book mark page to read later with just a click. I was happy living with it.</p>
+
+<p>But on one fine day, <a href="http://2x3idiots.blogspot.com/">Hrishiettan</a> told me about sharing the links we read and its advantages. Sharing links will help many people to find interesting articles easily and it will also act as a link-index in case if we want to refer it again. The idea is really good and he told he would start working on a php app.</p>
+
+<p>On another day, I told about this to <a href="http://raghesh.wordpress.com/">Raghesh sir</a>. He told there&#8217;s an option to export our list to html in &#8216;Read it later&#8217;. That&#8217;s it! They have an API too! Got the API key from their website, cleared all existing links as they contain irrelevant news links, and wrote following script. It now updates the links in <a href="http://ershadk.com/links/">http://ershadk.com/links/</a> every 5 minutes automatically from my &#8216;Read it later&#8217; list. Thank you :)</p>
+
+<p>ps: The standard way of xml parsing didn&#8217;t work, that&#8217;s why I wrote it rude :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A Python Script to Generate SQL Queries for Importing Links/blogroll in Another Wordpress Blog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-13T13:17:13+05:30" pubdate data-updated="true">Nov 13<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here&#8217;s the problem: There are 30 precious links in my <a href="http://ershadk.wordpress.com">old blog</a> under blogroll. Exporting feature of wordpress does not export the contents in blogroll/links. The task is to import those links in this new blog with minimum effort.</p>
+
+<p>Well, Adding 30 links manually ain&#8217;t difficult - it may take a maximum of 15 minutes to complete the task. But it&#8217;s too repetitive and boring. The best way is obviously writing a script.</p>
+
+<p>Here&#8217;s a small python script that generates SQL queries to insert old blogroll items in new database. It will ask for old blog URL and new database name - that&#8217;s it, it will search your old blog for blogroll links and print INSERT statements in stdout suitable for executing in phpmyadmin or directly in mysql shell :)</p>
+
+<p>Hope you like it, Thank you :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/12/new-home/">New Home!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-12T17:48:22+05:30" pubdate data-updated="true">Nov 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It was one of my dreams to have an own domain. With god&#8217;s grace, It&#8217;s cherished now.</p>
+
+<p>Thank a lot to <a href="http://www.bizzard.info/">Manu</a>ettan and his firm <a href="http://www.coolwrks.com/">Coolwrks</a> for kindly hosting this website. If he hadn&#8217;t provided me free hosting, I wouldn&#8217;t have even registered this domain :)</p>
+
+<p>Please update your feed /email subscriptions from old blog to this one. Thank you :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/23/tathva-memories-nitc/">Tathva Memories @ NITC</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-23T20:24:58+05:30" pubdate data-updated="true">Oct 23<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>&#8221;.. I&#8217;m leaving this campus today. I will miss the late-night hangouts with <a href="http://k4rtik.wordpress.com/">Kartik</a> and Pankaj.. I will miss the stay in Kartik&#8217;s room with Arjun and Rohit (If you are reading this, All the best for your IAS, brother). I will missRamnath, Arnab and all my friends here and this great institution.. I&#8217;m sure I will be back here for the next event.. With a million beautiful memories in 4 days.. Adieu NITC..&#8221;</em></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/18/anagram-solver-in-c/">Anagram Solver in C</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-18T16:58:26+05:30" pubdate data-updated="true">Sep 18<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hi, Here&#8217;s a small anagram solver written in C. It works based on generating permutations of given string and comparing them using a dictionary. For fast search in dictionary, the program first creates an index of the starting location of each alphabet. It takes a few minutes to process long words.</p>
+
+<p><a href="https://github.com/ershad/Snippets/blob/master/anagramSolver.c">Here&#8217;s the source code</a>. Suggestions are always welcome, Greetings :)</p>
+
+<p>Update: There&#8217;s a little problem in using the term &#8216;anagram solver&#8217; here. An anagram solver finds words from another valid word - But this program finds words from the characters of given valid/invalid word. Thanks to <a href="http://technikhil.wordpress.com">technikhil</a> for the info :)</p>
+
+<p>Note: Realized that this implementation of anagram solver is inefficient. Will post a better one soon.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/08/12/why-i-started-loving-archlinux/">Why I Started Loving Archlinux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-12T16:29:45+05:30" pubdate data-updated="true">Aug 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>We like simplicity. We like everything new.</p>
+
+<p>It&#8217;s been some years since I switched completely to GNU/Linux. I always wondered at its stability, security, features, community and at the people who use it. GNU/Linux helped me to have exciting computing experience all the time filled with wonders and fun. I forgot about the existence of Antivirus software. Forgot the time I feared autorun.inf and weird executable files. Forgot BSOD and EULA. Now, everything is open. Met many new people, similar interests bonded us. People who use GNU/Linux have always been very helpful. They share knowledge instead of pirated software. They teach us to fish. A kind of special relationship rooted between us, in a world connected by computer networks and its underlying complex abstractions. At this moment, I would like to thank everyone who made lives of people like me colourful.</p>
+
+<p>I had been using Debian Squeeze for a while and was happy with that. Had its complete repo offline which helped me to install any package in spite of the very slow internet connection I had then. Though the things went smooth, I faced some issues during that time with the compilation of new software from source. Fixing dependency issues were pain. The new source of package requires new version of dependencies which were not available in repo. Compiling them from source always created new pains. Updating software/repo was not possible because of the slow speed of internet. Taking laptop to college and updating from there also didn&#8217;t work due to various technical and non-technical reasons. I felt like I was completely forbidden from trying new versions of software. I was in a kind of lock then. Suddenly, one fine day, I got a broadband internet connection!</p>
+
+<p>I don&#8217;t have words to express how much happiness I felt. Now the scenario has completely changed. I can now change the Debian repo to testing or sid, try new packages, configure backports or update what ever I want. But, I thought it was time for a change. Changes are the spices of life, indeed.</p>
+
+<p>I wanted to install another distro from the mainstream. First, I thought of Fedora 15 which is a very good OS and hacks by <a href="http://rajeeshknambiar.wordpress.com">Rajeeshettan</a> in it always inspired me. Also I had used Fedora 14 for several months. But in Fedora too, I missed an element of simplicity and playfulness. The point with these type of operating system is that it comes with all basic packages preconfigured and giving us less opportunities to play with those.</p>
+
+<p>Next choice was obviously <a href="http://archlinux.org">Archlinux</a>. I have been hearing about it since I met my another GNU/Linux guru - <a href="http://aashiks.in/">Ashikettan</a>. He blogs about Arch much and talks about it often. Also, I had tried it once months before when I had speedy internet connection. The best thing about Archlinx is that it is a rolling distro, and new packages are always readily available!</p>
+
+<p><a href="http://ershadk.com/blog/wp-content/uploads/2011/08/500px-archlinux-official-fullcolour-svg.png"><img src="http://ershadk.com/blog/wp-content/uploads/2011/08/500px-archlinux-official-fullcolour-svg.png" alt="" /></a>To install, I got the 64bit iso image from Arch website and made thumb bootable with <a href="https://github.com/abock/image-usb-stick/">abock</a>. The installation went smooth and had a nice time configuring various things along with my favourite desktop environment - KDE. I was not really able to use KDE since the version in Debian Squeeze was a bit buggy and it crashed often. I was using Gnome 2.x then. Now, I&#8217;m really happy with KDE 4.7.0 with a distro which can be updated easily using its sweet package manager - pacman. Arch also has a wonderful knowledge base - The <a href="https://wiki.archlinux.org/index.php/Main_Page">ArchWiki</a>. ArchWiki has many tutorials to play with for beginners and for expert users.</p>
+
+<p>To talk about packages in Archlinux, I don&#8217;t have words! I remember trying to install new version of Ipython in debian which comes with a new tool called qtconsole. Qtconsole can show the outputs of matplotlib embedded inside the window instead of showing as a pop-up. It was a bit pain fixing various python modules that depended upon on other packages in debian. But in Archlinux, a simple &#8216;pacman -S ipython&#8217; after a system upgrade with &#8216;pacman -Syu&#8217; solved the issue. (Please note that though &#8216;pacman -Sy ipython&#8217; alone installs new version of Ipython, it may lead to dependency issues sometimes. Always install with &#8216;-S&#8217; and have an system upgrade with &#8216;-Syu&#8217; often). Upgrading the system obviously updates kernel, now Arch has kernel 3.0 in repo!</p>
+
+<p>Please do not have a feeling that I&#8217;m saying other distro/package managers are bad or less useful than Arch/pacman, I was simply having a comparison under special conditions - Indeed, every GNU/Linux thing is great and well developed!</p>
+
+<p>Another great feature I found in Archlinux is the rc.conf file. We can easily configure various system wide things in /etc/rc.conf file, like which all kernel modules to load, which all daemons to run at start, hostname, timezone, network interfaces, gateways and so on. There&#8217;s also an application called &#8216;rc.d&#8217; which is similar to &#8216;service&#8217; in debian/ubuntu using which we can start various services like sshd, etc. Also, the support in IRC channel (#archlinux @ irc.freenode.net) and in Arch forums are very helpful.</p>
+
+<p>Finally, as a student, I find Archlinux very useful and informative, Also it&#8217;s so much of fun using it. I humbly recommend this sweet GNU/Linux distro to everyone who likes to add more spice to their GNU/Linux computing. I just started with Archlinux and hope I could post more about it in future. Thank you so much for reading. Greetings!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/16/it-was-really-a-wonderful-experience-at-mes/">It Was Really a Wonderful Experience at MES :)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T14:59:07+05:30" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday, I went to <a href="http://mesce.ac.in">MES College of Engineering</a> to deliver a small talk on programming and free software, it was entirely a new experience for me. A bigger crowd than expected was present. It went fine :) Thanks to <a href="http://raghesh.wordpress.com/">Raghesh sir</a>, Raju sir, S@IT and to friends there :)</p>
+
+<p>I&#8217;m happy to <a href="http://www.slideshare.net/ershadk/programming-is-fun-an-intro-to-free-software">share my little slides</a>. It was created according to numerous suggestions by Raghesh sir. For fun, the presentation was started with a SMS trigger from audience :) The code for that is like &#8216;get-thing-done&#8217; and doesn&#8217;t have the quality to upload. It&#8217;s developed using python with gammu module. Please feel free to tell me if you want to have a look at the code.</p>
+
+<p>Attribution: &#8216;Input -> Fun -> Output&#8217; is an idea got from Niyam Bhushan during his talk at NIT Calicut on FOSS Meet day.</p>
+
+<p>Thank you :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error &#8220;[FATAL] failed to allocate memory&#8221; in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of &#8216;Read it later&#8217; list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

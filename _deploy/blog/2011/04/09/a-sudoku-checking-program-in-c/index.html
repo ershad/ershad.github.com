@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A sudoku checking program in C :) - Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="It just started when my younger bro, Shafeeq who reads hacker news everyday, found a little interesting blog post. It was about the authors &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/blog/2011/04/09/a-sudoku-checking-program-in-c/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">A Sudoku Checking Program in C :)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T21:57:47+05:30" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It just started when my younger bro, Shafeeq who reads <a href="http://news.ycombinator.com/">hacker news</a> everyday, found a little interesting blog post. It was about the authors experience in applying for an internship at Google. The candidate was asked to write a program to check a completed sudoku during the telephone interview for errors, in his favorite programming language. I asked bro, &#8220;Why don&#8217;t you give it a try?!&#8221;. He&#8217;s now in 11th standard and started coding in C++ which he learns in Computer Science subject. He came up with the code in one day, and then it was my turn to do that :) Here&#8217;s the way I solved the problem and it&#8217;s in pure C.</p>
+
+<p>You can find the code <a href="https://github.com/ershad/checksudoku/blob/master/checksudoku.c">here, in github</a>. The input is given as a plain text file that contains 9x9 numbers separated by space. A sample input is given below:</p>
+
+<blockquote><p>7 2 3 8 4 6 1 5 9
+6 1 5 3 9 2 4 7 8
+8 4 9 7 1 5 6 3 2
+3 7 8 6 5 4 9 2 1
+1 9 4 2 8 7 3 6 5
+2 5 6 9 3 1 8 4 7
+5 6 1 4 7 9 2 8 3
+4 8 7 1 2 3 5 9 6
+9 3 2 5 6 8 7 1 4</p></blockquote>
+
+<p>And to check for errors, please call the program with the file as argument, like this -</p>
+
+<blockquote><p>$checksudoku <data_file></p></blockquote>
+
+<p>Hope you enjoyed it, Please go through the code and feel free to post your valuable comments and suggestions here. Thank you :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ershad K</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T21:57:47+05:30" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/experiments/'>Experiments</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ershad.github.com/blog/2011/04/09/a-sudoku-checking-program-in-c/" data-via="" data-counturl="http://ershad.github.com/blog/2011/04/09/a-sudoku-checking-program-in-c/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/03/13/the-little-twitter-client-i-use/" title="Previous Post: The little twitter client I use :)">&laquo; The little twitter client I use :)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/26/setting-up-a-debian-repo-in-lan/" title="Next Post: Setting up a Debian repo in LAN">Setting up a Debian repo in LAN &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of 'Read it later' list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

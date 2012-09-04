@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Python script for automatic synchronisation of 'Read it later' list and webpage - Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="[caption id=&#8221;attachment_461&#8221; align=&#8221;alignright&#8221; width=&#8221;229&#8221; caption=&#8221;Adding to &#8216;Read it later&#8217; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Python Script for Automatic Synchronisation of 'Read It Later' List and Webpage</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-16T20:28:28+05:30" pubdate data-updated="true">Nov 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>[caption id=&#8221;attachment_461&#8221; align=&#8221;alignright&#8221; width=&#8221;229&#8221; caption=&#8221;Adding to &#8216;Read it later&#8217; list&#8221;]<a href="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png"><img src="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png" alt="" /></a>[/caption]</p>
+
+<p>One of the powerful features of firefox is that it has thousands of useful addons. We are going to deal with such an addon - <a href="http://readitlaterlist.com/">Read it later</a>. It allows us to book mark page to read later with just a click. I was happy living with it.</p>
+
+<p>But on one fine day, <a href="http://2x3idiots.blogspot.com/">Hrishiettan</a> told me about sharing the links we read and its advantages. Sharing links will help many people to find interesting articles easily and it will also act as a link-index in case if we want to refer it again. The idea is really good and he told he would start working on a php app.</p>
+
+<p>On another day, I told about this to <a href="http://raghesh.wordpress.com/">Raghesh sir</a>. He told there&#8217;s an option to export our list to html in &#8216;Read it later&#8217;. That&#8217;s it! They have an API too! Got the API key from their website, cleared all existing links as they contain irrelevant news links, and wrote following script. It now updates the links in <a href="http://ershadk.com/links/">http://ershadk.com/links/</a> every 5 minutes automatically from my &#8216;Read it later&#8217; list. Thank you :)</p>
+
+<p>ps: The standard way of xml parsing didn&#8217;t work, that&#8217;s why I wrote it rude :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ershad K</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-16T20:28:28+05:30" pubdate data-updated="true">Nov 16<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/experiments/'>Experiments</a>, <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ershad.github.com/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/" data-via="" data-counturl="http://ershad.github.com/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/" title="Previous Post: A python script to generate SQL queries for importing links/blogroll in another wordpress blog">&laquo; A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/" title="Next Post: Set up Rails 3.2.2 with Passenger, rvm and ngnix">Set up Rails 3.2.2 with Passenger, rvm and ngnix &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of 'Read it later' list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

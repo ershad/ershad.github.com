@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A simple square pattern in C++ - Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="Here&#8217;s a small C++ program which outputs a square pattern according to the size entered. Code is given below : [sourcecode language=&#8221;cpp &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/blog/2010/07/29/a-simple-square-pattern-in-c/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">A Simple Square Pattern in C++</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-29T01:30:32+05:30" pubdate data-updated="true">Jul 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Here&#8217;s a small C++ program which outputs a square pattern according to the size entered. Code is given below :</p>
+
+<p>[sourcecode language=&#8221;cpp&#8221; light=&#8221;true&#8221;]</p>
+
+<p>/<em>
+* sqpattern.cpp
+*
+* Copyright 2010 Ershad K ershad92@gmail.com
+* Licensed under GPL Version 3
+*
+* To compile - g++ -o sqpattern sqpattern.cpp
+* To execute - ./sqpattern
+</em>/</p>
+
+<h1>include <iostream></h1>
+
+<p>using namespace std;</p>
+
+<p>int main()
+{
+  int size;
+  cout &lt;&lt; &#8220;Enter size: &#8220;;
+  cin >> size;</p>
+
+<p>  int count = 1;
+  cout &lt;&lt; &#8221; &#8220;;
+  while (count++ &lt; size) cout &lt;&lt; &#8221; _&#8221;;</p>
+
+<p>  for (int i = 1; i &lt; size; i++)</p>
+
+<pre><code>{
+  int numOfCharsPerLine = 0;
+  cout &lt;&lt; "n";
+  for (int j = 0; j &lt; i; j++)
+    {
+      cout &lt;&lt; " |";
+      numOfCharsPerLine += 2;
+    }
+
+  cout &lt;&lt; "_";
+  numOfCharsPerLine += 1;
+
+  int k = 1;
+  while (k++ &lt; (size*2) - numOfCharsPerLine )
+  cout &lt;&lt; " ";
+  cout &lt;&lt; "|";
+}
+</code></pre>
+
+<p>  count = 1;
+  cout &lt;&lt; &#8220;n &#8220;;
+  while (count++ &lt;= (size)-1 ) cout &lt;&lt; &#8220;|_&#8221;;</p>
+
+<p>  cout &lt;&lt; &#8220;|n&#8221;;</p>
+
+<p>return 0;
+}</p>
+
+<p>[/sourcecode]</p>
+
+<p>Output:</p>
+
+<p><a href="http://ershadk.com/blog/wp-content/uploads/2010/07/screenshot.png"><img src="http://ershadk.com/blog/wp-content/uploads/2010/07/screenshot.png" alt="" /></a>The programs draws squares of any size entered. The code needs improvement, please feel free to give suggestions. Click <a href="http://github.com/ershad/Experiments.cpp">here</a> for &#8216;experiments&#8217; git repo. Thank you :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ershad K</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-29T01:30:32+05:30" pubdate data-updated="true">Jul 29<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-/'>C++</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ershad.github.com/blog/2010/07/29/a-simple-square-pattern-in-c/" data-via="" data-counturl="http://ershad.github.com/blog/2010/07/29/a-simple-square-pattern-in-c/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/06/13/how-to-download-deb-packages-for-offline-installation-2/" title="Previous Post: How to download .deb packages for offline installation">&laquo; How to download .deb packages for offline installation</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/02/19/python-script-to-fix-vbr-errors-of-mp3-files-in-a-directory-recursively/" title="Next Post: Python Script to fix VBR errors of mp3 files in a directory, recursively ">Python Script to fix VBR errors of mp3 files in a directory, recursively  &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of 'Read it later' list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

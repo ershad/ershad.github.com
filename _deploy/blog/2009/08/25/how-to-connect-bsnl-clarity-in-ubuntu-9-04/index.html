@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to connect BSNL Clarity in ubuntu 9.04 ? - Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="Though we have many tools to connect BSNL Clarity in Linux Systems, unfortunately they don&#8217;t work in ubuntu 9.04 and in other lastest OS&#8217 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/blog/2009/08/25/how-to-connect-bsnl-clarity-in-ubuntu-9-04/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Connect BSNL Clarity in Ubuntu 9.04 ?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-25T11:45:55+05:30" pubdate data-updated="true">Aug 25<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Though we have many tools to connect BSNL Clarity in Linux Systems, unfortunately they don&#8217;t work in ubuntu 9.04 and in other lastest OS&#8217;. Here, i will explain how to get connected with BSNL clarity in ubuntu 9.04.</p>
+
+<p>First, you need to edit the grub and add a line to ubuntu&#8217;s kernel. Follow the steps to do that:</p>
+
+<blockquote><p>sudo gedit /boot/grub/menu.lst</p></blockquote>
+
+<p>Modify the ubuntu&#8217;s boot configuration to like this :</p>
+
+<p>title  Ubuntu 9.04
+uuid  b744ea84-c1b7-4519-9223-3bb99103d42f
+kernel  /boot/vmlinuz-2.6.28-11-generic root=UUID=b744ea84-c1b7-4519-9223-3bb99103d42f ro quiet splash <strong>usbserial.vendor=0x15eb usbserial.product=0x0001</strong>
+initrd  /boot/initrd.img-2.6.28-11-generic</p>
+
+<p>I simply added &#8217;<strong>usbserial.vendor=0x15eb usbserial.product=0x0001&#8217; </strong>to the kernel.</p>
+
+<p>Next step is to install wvdial. Since the ubuntu 9.04 CD edition doesn&#8217;t have wvdial by default, we need to install it manually. Follow the steps to install it :</p>
+
+<ol>
+<li><p>Download <strong><a href="http://groups.google.com/group/cppworld/web/wvdial.zip">this</a></strong> file</p></li>
+<li><p>Extract it in your home directory</p></li>
+<li><p>Give the following commands in terminal</p></li>
+</ol>
+
+
+<blockquote><p>cd wvidal</p></blockquote>
+
+<p>sudo dpkg -i *.deb</p>
+
+<ol>
+<li>Restart the computer</li>
+</ol>
+
+
+<p>It&#8217;s done ! Now you can browse like the older versions of ubuntu by executing Mr.Dipin Krishna&#8217;s executable (./bsnlclarity in terminal after copying it in your home directory) . You can get it <strong><a href="http://blog.dipinkrishna.info/2008/10/easy-way-to-access-internet-through.html">here</a></strong>. Good Luck :)</p>
+
+<p><strong>
+</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ershad K</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-25T11:45:55+05:30" pubdate data-updated="true">Aug 25<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/experiments/'>Experiments</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ershad.github.com/blog/2009/08/25/how-to-connect-bsnl-clarity-in-ubuntu-9-04/" data-via="" data-counturl="http://ershad.github.com/blog/2009/08/25/how-to-connect-bsnl-clarity-in-ubuntu-9-04/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/06/08/checknet-v1-0-alpha-gnulinux-only/" title="Previous Post: Checknet V1.0 Alpha (GNU/Linux only)">&laquo; Checknet V1.0 Alpha (GNU/Linux only)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/09/05/easy-clarity-connect-easily/" title="Next Post: Easy Clarity - Connect Easily!">Easy Clarity - Connect Easily! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of 'Read it later' list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Syntax]]></title>
+  <link href="http://ershad.github.com/atom.xml" rel="self"/>
+  <link href="http://ershad.github.com/"/>
+  <updated>2012-09-05T00:00:24+05:30</updated>
+  <id>http://ershad.github.com/</id>
+  <author>
+    <name><![CDATA[Ershad K]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Releasing myfest.in - A web app to find and share campus fest and events!]]></title>
+    <link href="http://ershad.github.com/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/"/>
+    <updated>2012-05-31T21:41:44+05:30</updated>
+    <id>http://ershad.github.com/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events</id>
+    <content type="html"><![CDATA[<p><a href="http://myfest.in"><img src="http://ershadk.com/blog/wp-content/uploads/2012/05/myfest.png" alt="" /></a>I&#8217;m very happy to release my little hobby project <a href="http://myfest.in">myfest.in</a>, a place where you can find and share campus fests across India.The backend is written in ruby using Ruby on Rails framework and I&#8217;ve been having a nice time developing it for the last few weekends :)</p>
+
+<p>The initial spark to build it was from the experience thatI&#8217;ve been going to campus fests in Kerala and realized the necessity for a simpler way of sharing the information regarding fests. Many times I&#8217;ve seen students from other states (like from Rajasthan and Haryana) attending the fests in Kerala and I wondered how they got the necessary information. Most of them told they either got a personal invitation or came to know about fest from some website. I thought about the thousands of students who were missing the opportunities because they didn&#8217;t come to know about it on time. Also I&#8217;ve seen some campus fests without much of an outside participation. They were not able to promote the fest to interested students. I wanted to make a little solution for this and hence built <a href="http://myfest.in">myfest.in</a>. Thanks to <a href="http://arkarjun.wordpress.com">Arjun</a> for the <a href="http://myfest.in">myfest.in</a> logo :)</p>
+
+<p>To those who are interested in the technologies <a href="http://myfest.in">myfest.in</a> uses: It&#8217;s written in Ruby on Rails with MySQL database and a little jQuery. It runs in a dedicated VPS with nginx and passenger.</p>
+
+<p>I hope you liked it. If you happen to find any bug, please report it to myfest@myfest.in. Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion]]></title>
+    <link href="http://ershad.github.com/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/"/>
+    <updated>2012-05-10T10:21:46+05:30</updated>
+    <id>http://ershad.github.com/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion</id>
+    <content type="html"><![CDATA[<p>This error happens when mysql2 gem is either installed for some other version of mysql or when it cannot find required dynamic library. To fix this error, uninstall mysql2 gem and install as follows
+[code]$ env ARCHFLAGS=&#8221;-arch x86_64&#8221; gem install mysql2 -v=&#8217;0.3.11&#8217; &#8211; &#8211;with-mysql-dir=/usr/local/mysql &#8211;with-mysql-lib=/usr/local/mysql/lib &#8211;with-mysql-include=/usr/local/mysql/include &#8211;with-mysql-config=/usr/local/mysql/bin/mysql_config[/code]
+Please change &#8216;/usr/local/mysql&#8217; to your mysql installation path. Thank you.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Set up Rails 3.2.2 with Passenger, rvm and ngnix]]></title>
+    <link href="http://ershad.github.com/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/"/>
+    <updated>2012-04-06T01:08:55+05:30</updated>
+    <id>http://ershad.github.com/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix</id>
+    <content type="html"><![CDATA[<p>Ruby on Rails is becoming more feature rich and powerful by every release.Naturallythe steps to get it working in production environment are also being changed. I&#8217;ve been trying to set up Rails 3.2.2 for a while and here&#8217;s the method that finally worked. This method should work for the new Rails release, 3.2.3 too.</p>
+
+<p><strong>Install Server Operating System</strong></p>
+
+<p>We have a large pool of operating systems to select for our server. Though Debian Squeeze and CentOS have proved their stability in serving rails applications, I would prefer a LTS version of Ubuntu Server edition. I did a small survey, Many experienced programmers said they are using Ubuntu server as it&#8217;s easy to maintain, Packages are in plenty and has better stability.Also Canonical promises to give us 5 years of support for LTS edition operating systems. Current LTS edition is Ubuntu Server 10.04</p>
+
+<p><strong>Install RVM</strong></p>
+
+<p>Ruby Version Manager(RVM) helps to managemultipleruby versions in a single machine. RVM helps us to quickly switch Ruby/Rails versions. Before installing RVM, we need to install git, curl and autoconf. Use the following command to do it:</p>
+
+<p>[code]$ sudo apt-get -y install git-core curl autoconf[/code]</p>
+
+<p>Then install and configure RVM,</p>
+
+<p>[code]</p>
+
+<p>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</p>
+
+<p>$ echo &#8216;[[ -s &#8220;$HOME/.rvm/scripts/rvm&#8221; ]] &amp;&amp; . &#8220;$HOME/.rvm/scripts/rvm&#8221; # Load RVM function&#8217; >> ~/.bash_profile</p>
+
+<p>[/code]</p>
+
+<p>Source ~/.bash_profile to add rvm as a function to shell</p>
+
+<p>[code]$ source ~/.bash_profile[/code]</p>
+
+<p><strong>Install Ruby</strong></p>
+
+<p>Before installing Ruby, we need to install all dependency packages. The following command lists the dependency packages.</p>
+
+<p>[code]$ rvm requirements [/code]</p>
+
+<p>We can see a line with lots of package names, something like the following. Execute it directly with sudo in shell to install packages:</p>
+
+<p>[code]</p>
+
+<p>sudo /usr/bin/apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion[/code]</p>
+
+<p>Next step is to install Ruby.Current latest version of Ruby 1.9.3. Let&#8217;s install it</p>
+
+<p>[code]$ rvm install 1.9.3[/code]</p>
+
+<p>It will take a few minutes to fetch source, configure and compile.</p>
+
+<p>After completing installation, we can set 1.9.3 as the default version:</p>
+
+<p>[code]$rvm use 1.9.3 &#8211;default[/code]</p>
+
+<p><strong>Install passenger</strong></p>
+
+<p>Passenger is a free module for Apache and nginx to run Ruby applications. Luckily it&#8217;s available as a Ruby gem and it&#8217;s easy to install and configure it.</p>
+
+<p>Install passenger gem</p>
+
+<p>[code]$ gem install passenger[/code]</p>
+
+<p>Install and configure nginx</p>
+
+<p>[code]$ rvmsudo passenger-install-nginx-module[/code]</p>
+
+<p>This command downloads nginx source code, builds it and finally configures passenger for us. Default location of ngnix is /opt/nginx and we can find the configuration in /opt/nginx/conf/nginx.conf</p>
+
+<p>If you open nginx configuration, you can see the following lines have been already added into it in &#8216;http&#8217; configuration:</p>
+
+<p>[code]</p>
+
+<p>passenger_root /home/ershad/.rvm/gems/ruby-1.9.3-p125/gems/passenger-3.0.11;
+passenger_ruby /home/ershad/.rvm/wrappers/ruby-1.9.3-p125/ruby;</p>
+
+<p>[/code]</p>
+
+<p><strong>Install Rails</strong></p>
+
+<p>Before installing rails, we will create a gemset. Gemset is feature of RVM where we can create multiple gemset to store different gems of different versions.</p>
+
+<p>Let&#8217;s create a gemset for Rails 3.2.2</p>
+
+<p>[code]</p>
+
+<p>$ rvm gemset create rails322</p>
+
+<p>$ rvm gemset use rails322</p>
+
+<p>[/code]</p>
+
+<p>Installing rails is pretty straight forward.</p>
+
+<p>[code]$ gem install rails -v 3.2.2[/code]</p>
+
+<p>If you are not interested in the documentation that comes along with rails gem, use the following command instead</p>
+
+<p>[code]$ gem install rails -v 3.2.2&#8211;no-ri &#8211;no-rdoc [/code]</p>
+
+<p><strong>Install nginx init script</strong></p>
+
+<p>nginx init script by Jason Giedymin helps us to administerweb server easily.</p>
+
+<p>[code]
+$ cd
+$ git clone git://github.com/jnstq/rails-nginx-passenger-ubuntu.git
+$ sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx
+$ sudo chown root:root /etc/init.d/nginx
+[/code]</p>
+
+<p><strong>Deploying application</strong>
+Let&#8217;s store all rails applications under /var/rails_apps/ directory. Let&#8217;s make such a folder
+[code]
+$ sudo mkdir -p /var/rails_apps
+$ sudo chmod 777 /var/rails_apps/ #giving full file permissions
+[/code]
+Let&#8217;s create a sample rails application in rails_apps directory
+[code]
+$ cd /var/rails_apps
+$ rails new helloworld
+$ cd helloworld
+$ vim Gemfile # and uncomment the line to include &#8216;therubyracer&#8217; gem. We need a javascript runtime
+$ bundle install
+$ bundle exec rake assets:precompile #Precompile assets to public/ dir</p>
+
+<p>[/code]
+Next step is point ngnix to this location. Add the following snippet in /opt/nginx/conf/nginx.conf
+[code]</p>
+
+<p>server {
+listen 80;
+server_name example.com;
+rails_env production;
+root /var/rails_apps/helloworld/public; # &lt;&#8212; be sure to point to &#8216;public&#8217;!
+passenger_enabled on;
+}</p>
+
+<p>[/code]</p>
+
+<p>Restart the server</p>
+
+<p>[code] sudo /etc/init.d/nginx restart[/code]</p>
+
+<p>Your application must be alive and running now! :)</p>
+
+<p><strong>Points to remember</strong></p>
+
+<p>1) Rails application doesn&#8217;t get updated when we change the code. This is because we need to restart passengerexplicitly</p>
+
+<p>Restarting passenger is easy, we just have to create a file &#8216;restart.txt&#8217; in tmp/ dir of the application. For example</p>
+
+<p>[code]</p>
+
+<p>$ cd /var/rails_apps/helloworld</p>
+
+<p>$ touch tmp/restart.txt</p>
+
+<p>[/code]</p>
+
+<p>2) Always precompile assets after generating controller or scaffold</p>
+
+<p>3) Make sure you are migrating in &#8216;production&#8217; environment. This can be done using the following command.</p>
+
+<p>[code] rake db:migrate RAILS_ENV=production[/code]</p>
+
+<p>4) When you get errors related to routes, check the list of all routes</p>
+
+<p>[code] $ rake routes [/code]</p>
+
+<p>5) When something goes wrong, see log/production.log</p>
+
+<p>6) If you happen to get passenger errors related to missing gems, just add those gems in Gemfile and use the following command</p>
+
+<p>[code] $bundle install &#8211;path vendor/bundle [/code]</p>
+
+<p>That&#8217;s it. Happy hacking with Ruby on Rails. Thank you.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python script for automatic synchronisation of 'Read it later' list and webpage]]></title>
+    <link href="http://ershad.github.com/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/"/>
+    <updated>2011-11-16T20:28:28+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage</id>
+    <content type="html"><![CDATA[<p>[caption id=&#8221;attachment_461&#8221; align=&#8221;alignright&#8221; width=&#8221;229&#8221; caption=&#8221;Adding to &#8216;Read it later&#8217; list&#8221;]<a href="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png"><img src="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png" alt="" /></a>[/caption]</p>
+
+<p>One of the powerful features of firefox is that it has thousands of useful addons. We are going to deal with such an addon - <a href="http://readitlaterlist.com/">Read it later</a>. It allows us to book mark page to read later with just a click. I was happy living with it.</p>
+
+<p>But on one fine day, <a href="http://2x3idiots.blogspot.com/">Hrishiettan</a> told me about sharing the links we read and its advantages. Sharing links will help many people to find interesting articles easily and it will also act as a link-index in case if we want to refer it again. The idea is really good and he told he would start working on a php app.</p>
+
+<p>On another day, I told about this to <a href="http://raghesh.wordpress.com/">Raghesh sir</a>. He told there&#8217;s an option to export our list to html in &#8216;Read it later&#8217;. That&#8217;s it! They have an API too! Got the API key from their website, cleared all existing links as they contain irrelevant news links, and wrote following script. It now updates the links in <a href="http://ershadk.com/links/">http://ershadk.com/links/</a> every 5 minutes automatically from my &#8216;Read it later&#8217; list. Thank you :)</p>
+
+<p>ps: The standard way of xml parsing didn&#8217;t work, that&#8217;s why I wrote it rude :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A python script to generate SQL queries for importing links/blogroll in another wordpress blog]]></title>
+    <link href="http://ershad.github.com/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/"/>
+    <updated>2011-11-13T13:17:13+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s the problem: There are 30 precious links in my <a href="http://ershadk.wordpress.com">old blog</a> under blogroll. Exporting feature of wordpress does not export the contents in blogroll/links. The task is to import those links in this new blog with minimum effort.</p>
+
+<p>Well, Adding 30 links manually ain&#8217;t difficult - it may take a maximum of 15 minutes to complete the task. But it&#8217;s too repetitive and boring. The best way is obviously writing a script.</p>
+
+<p>Here&#8217;s a small python script that generates SQL queries to insert old blogroll items in new database. It will ask for old blog URL and new database name - that&#8217;s it, it will search your old blog for blogroll links and print INSERT statements in stdout suitable for executing in phpmyadmin or directly in mysql shell :)</p>
+
+<p>Hope you like it, Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[New home!]]></title>
+    <link href="http://ershad.github.com/blog/2011/11/12/new-home/"/>
+    <updated>2011-11-12T17:48:22+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/11/12/new-home</id>
+    <content type="html"><![CDATA[<p>It was one of my dreams to have an own domain. With god&#8217;s grace, It&#8217;s cherished now.</p>
+
+<p>Thank a lot to <a href="http://www.bizzard.info/">Manu</a>ettan and his firm <a href="http://www.coolwrks.com/">Coolwrks</a> for kindly hosting this website. If he hadn&#8217;t provided me free hosting, I wouldn&#8217;t have even registered this domain :)</p>
+
+<p>Please update your feed /email subscriptions from old blog to this one. Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tathva memories @ NITC]]></title>
+    <link href="http://ershad.github.com/blog/2011/10/23/tathva-memories-nitc/"/>
+    <updated>2011-10-23T20:24:58+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/10/23/tathva-memories-nitc</id>
+    <content type="html"><![CDATA[<p><em>&#8221;.. I&#8217;m leaving this campus today. I will miss the late-night hangouts with <a href="http://k4rtik.wordpress.com/">Kartik</a> and Pankaj.. I will miss the stay in Kartik&#8217;s room with Arjun and Rohit (If you are reading this, All the best for your IAS, brother). I will missRamnath, Arnab and all my friends here and this great institution.. I&#8217;m sure I will be back here for the next event.. With a million beautiful memories in 4 days.. Adieu NITC..&#8221;</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Anagram Solver in C]]></title>
+    <link href="http://ershad.github.com/blog/2011/09/18/anagram-solver-in-c/"/>
+    <updated>2011-09-18T16:58:26+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/09/18/anagram-solver-in-c</id>
+    <content type="html"><![CDATA[<p>Hi, Here&#8217;s a small anagram solver written in C. It works based on generating permutations of given string and comparing them using a dictionary. For fast search in dictionary, the program first creates an index of the starting location of each alphabet. It takes a few minutes to process long words.</p>
+
+<p><a href="https://github.com/ershad/Snippets/blob/master/anagramSolver.c">Here&#8217;s the source code</a>. Suggestions are always welcome, Greetings :)</p>
+
+<p>Update: There&#8217;s a little problem in using the term &#8216;anagram solver&#8217; here. An anagram solver finds words from another valid word - But this program finds words from the characters of given valid/invalid word. Thanks to <a href="http://technikhil.wordpress.com">technikhil</a> for the info :)</p>
+
+<p>Note: Realized that this implementation of anagram solver is inefficient. Will post a better one soon.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why I started loving Archlinux]]></title>
+    <link href="http://ershad.github.com/blog/2011/08/12/why-i-started-loving-archlinux/"/>
+    <updated>2011-08-12T16:29:45+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/08/12/why-i-started-loving-archlinux</id>
+    <content type="html"><![CDATA[<p>We like simplicity. We like everything new.</p>
+
+<p>It&#8217;s been some years since I switched completely to GNU/Linux. I always wondered at its stability, security, features, community and at the people who use it. GNU/Linux helped me to have exciting computing experience all the time filled with wonders and fun. I forgot about the existence of Antivirus software. Forgot the time I feared autorun.inf and weird executable files. Forgot BSOD and EULA. Now, everything is open. Met many new people, similar interests bonded us. People who use GNU/Linux have always been very helpful. They share knowledge instead of pirated software. They teach us to fish. A kind of special relationship rooted between us, in a world connected by computer networks and its underlying complex abstractions. At this moment, I would like to thank everyone who made lives of people like me colourful.</p>
+
+<p>I had been using Debian Squeeze for a while and was happy with that. Had its complete repo offline which helped me to install any package in spite of the very slow internet connection I had then. Though the things went smooth, I faced some issues during that time with the compilation of new software from source. Fixing dependency issues were pain. The new source of package requires new version of dependencies which were not available in repo. Compiling them from source always created new pains. Updating software/repo was not possible because of the slow speed of internet. Taking laptop to college and updating from there also didn&#8217;t work due to various technical and non-technical reasons. I felt like I was completely forbidden from trying new versions of software. I was in a kind of lock then. Suddenly, one fine day, I got a broadband internet connection!</p>
+
+<p>I don&#8217;t have words to express how much happiness I felt. Now the scenario has completely changed. I can now change the Debian repo to testing or sid, try new packages, configure backports or update what ever I want. But, I thought it was time for a change. Changes are the spices of life, indeed.</p>
+
+<p>I wanted to install another distro from the mainstream. First, I thought of Fedora 15 which is a very good OS and hacks by <a href="http://rajeeshknambiar.wordpress.com">Rajeeshettan</a> in it always inspired me. Also I had used Fedora 14 for several months. But in Fedora too, I missed an element of simplicity and playfulness. The point with these type of operating system is that it comes with all basic packages preconfigured and giving us less opportunities to play with those.</p>
+
+<p>Next choice was obviously <a href="http://archlinux.org">Archlinux</a>. I have been hearing about it since I met my another GNU/Linux guru - <a href="http://aashiks.in/">Ashikettan</a>. He blogs about Arch much and talks about it often. Also, I had tried it once months before when I had speedy internet connection. The best thing about Archlinx is that it is a rolling distro, and new packages are always readily available!</p>
+
+<p><a href="http://ershadk.com/blog/wp-content/uploads/2011/08/500px-archlinux-official-fullcolour-svg.png"><img src="http://ershadk.com/blog/wp-content/uploads/2011/08/500px-archlinux-official-fullcolour-svg.png" alt="" /></a>To install, I got the 64bit iso image from Arch website and made thumb bootable with <a href="https://github.com/abock/image-usb-stick/">abock</a>. The installation went smooth and had a nice time configuring various things along with my favourite desktop environment - KDE. I was not really able to use KDE since the version in Debian Squeeze was a bit buggy and it crashed often. I was using Gnome 2.x then. Now, I&#8217;m really happy with KDE 4.7.0 with a distro which can be updated easily using its sweet package manager - pacman. Arch also has a wonderful knowledge base - The <a href="https://wiki.archlinux.org/index.php/Main_Page">ArchWiki</a>. ArchWiki has many tutorials to play with for beginners and for expert users.</p>
+
+<p>To talk about packages in Archlinux, I don&#8217;t have words! I remember trying to install new version of Ipython in debian which comes with a new tool called qtconsole. Qtconsole can show the outputs of matplotlib embedded inside the window instead of showing as a pop-up. It was a bit pain fixing various python modules that depended upon on other packages in debian. But in Archlinux, a simple &#8216;pacman -S ipython&#8217; after a system upgrade with &#8216;pacman -Syu&#8217; solved the issue. (Please note that though &#8216;pacman -Sy ipython&#8217; alone installs new version of Ipython, it may lead to dependency issues sometimes. Always install with &#8216;-S&#8217; and have an system upgrade with &#8216;-Syu&#8217; often). Upgrading the system obviously updates kernel, now Arch has kernel 3.0 in repo!</p>
+
+<p>Please do not have a feeling that I&#8217;m saying other distro/package managers are bad or less useful than Arch/pacman, I was simply having a comparison under special conditions - Indeed, every GNU/Linux thing is great and well developed!</p>
+
+<p>Another great feature I found in Archlinux is the rc.conf file. We can easily configure various system wide things in /etc/rc.conf file, like which all kernel modules to load, which all daemons to run at start, hostname, timezone, network interfaces, gateways and so on. There&#8217;s also an application called &#8216;rc.d&#8217; which is similar to &#8216;service&#8217; in debian/ubuntu using which we can start various services like sshd, etc. Also, the support in IRC channel (#archlinux @ irc.freenode.net) and in Arch forums are very helpful.</p>
+
+<p>Finally, as a student, I find Archlinux very useful and informative, Also it&#8217;s so much of fun using it. I humbly recommend this sweet GNU/Linux distro to everyone who likes to add more spice to their GNU/Linux computing. I just started with Archlinux and hope I could post more about it in future. Thank you so much for reading. Greetings!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[It was really a wonderful experience at MES :)]]></title>
+    <link href="http://ershad.github.com/blog/2011/07/16/it-was-really-a-wonderful-experience-at-mes/"/>
+    <updated>2011-07-16T14:59:07+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/07/16/it-was-really-a-wonderful-experience-at-mes</id>
+    <content type="html"><![CDATA[<p>Yesterday, I went to <a href="http://mesce.ac.in">MES College of Engineering</a> to deliver a small talk on programming and free software, it was entirely a new experience for me. A bigger crowd than expected was present. It went fine :) Thanks to <a href="http://raghesh.wordpress.com/">Raghesh sir</a>, Raju sir, S@IT and to friends there :)</p>
+
+<p>I&#8217;m happy to <a href="http://www.slideshare.net/ershadk/programming-is-fun-an-intro-to-free-software">share my little slides</a>. It was created according to numerous suggestions by Raghesh sir. For fun, the presentation was started with a SMS trigger from audience :) The code for that is like &#8216;get-thing-done&#8217; and doesn&#8217;t have the quality to upload. It&#8217;s developed using python with gammu module. Please feel free to tell me if you want to have a look at the code.</p>
+
+<p>Attribution: &#8216;Input -> Fun -> Output&#8217; is an idea got from Niyam Bhushan during his talk at NIT Calicut on FOSS Meet day.</p>
+
+<p>Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A cryptographic tool that converts weak password into a strong password before encrypting]]></title>
+    <link href="http://ershad.github.com/blog/2011/06/10/a-cryptographic-tool-that-converts-weak-password-into-a-strong-password-before-encrypting/"/>
+    <updated>2011-06-10T21:26:51+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/06/10/a-cryptographic-tool-that-converts-weak-password-into-a-strong-password-before-encrypting</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s a small encryption/decryption tool that works based on AES algorithm. No matter how weak your password is, the program converts it to a 32 digits hexadecimal number before encrypting. This is achieved by finding the MD5 hash of the password using hashlib python module. This hash is used to encrypt the file.</p>
+
+<p><a href="https://github.com/ershad/Snippets/blob/master/crypto.py">The source file is here</a></p>
+
+<p>The idea in my mind while writing this program was this:</p>
+
+<p>Suppose a cracker gets an encrypted file and he figures out it&#8217;s encrypted using AES somehow. Then he starts brute force attack on it to find the key and extract information. If the password used to encrypt that file is weak and if it&#8217;s based on a dictionary word, the cracker can easily figure out the password. Hence the password given by the user must be made stronger by the encrypting program. And the best way to make a password strong is by using digest algorithms since it&#8217;s unique to a string.</p>
+
+<p>What do you think? Am I wrong? Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A small and simple note taking app]]></title>
+    <link href="http://ershad.github.com/blog/2011/05/26/a-small-and-simple-note-taking-app/"/>
+    <updated>2011-05-26T03:21:49+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/05/26/a-small-and-simple-note-taking-app</id>
+    <content type="html"><![CDATA[<p>Wrote a small python script that can be used with your favorite text editor as a simple note taking application. Hope you like it, suggestions are always welcome :)</p>
+
+<p><a href="https://github.com/ershad/Snippets/blob/master/note.py">Here&#8217;s the code!</a></p>
+
+<p>Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C program to extract email IDs from a file]]></title>
+    <link href="http://ershad.github.com/blog/2011/05/04/c-program-to-extract-email-ids-from-a-file/"/>
+    <updated>2011-05-04T00:21:45+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/05/04/c-program-to-extract-email-ids-from-a-file</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s a small program to extract email IDs from an input file. It could have done using regex (in Python or in any other high level language), but doing it in C is more fun, eh? :)</p>
+
+<p>The code is <a href="https://github.com/ershad/Snippets/blob/master/parseEmail.c">here!</a></p>
+
+<p>Usage: parseEmail [FILE]</p>
+
+<p>Suggestions and improvements are always welcome :) Thank you!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up a Debian repo in LAN]]></title>
+    <link href="http://ershad.github.com/blog/2011/04/26/setting-up-a-debian-repo-in-lan/"/>
+    <updated>2011-04-26T19:44:14+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/04/26/setting-up-a-debian-repo-in-lan</id>
+    <content type="html"><![CDATA[<p>It was really a nice experience going to <a href="http://www.mesce.ac.in">MES College Of Engineering</a>, Kuttippuram last week to attend Debian Mini Conf 2011. Met friends, made new friendships and learned many new things from there. Thanks to <a href="http://thecodecracker.com/">Jishnu ettan</a>, for giving me a 50GB Debian repo that contains all the packages of squeeze of both i686 and amd64 architectures. Today, I will explain how to set up a Debian repo (squeeze) so that it be can shared over LAN.</p>
+
+<p>First, run terminal and switch to root user.</p>
+
+<blockquote><p>$su</p></blockquote>
+
+<p>If you have the repo as an ISO image file, we need to mount it to a directory. The following command does that:</p>
+
+<blockquote><h1>mount <path-to-iso> <path-to-mount> -o loop</h1></blockquote>
+
+<p>Edit /etc/apt/source.lst and add the repo we mounted. Append the following line to the file:</p>
+
+<blockquote><p>deb file:///<mounted-path> squeeze main</p></blockquote>
+
+<p>Update the package list:</p>
+
+<blockquote><h1>apt-get update</h1></blockquote>
+
+<p>We are going to share the files using http, hence we need a webserver. To install apache:</p>
+
+<blockquote><h1>apt-get install apache2</h1></blockquote>
+
+<p>Make a symbolic link of <mounted-path> in /var/www</p>
+
+<blockquote><h1>ln -s /var/www/repo <mounted-path></h1></blockquote>
+
+<p>Done! Now add this machine as a repository in other Debian systems in LAN, edit /etc/apt/source.lst to:</p>
+
+<blockquote><p>deb http://<ip-of-server>/repo squeeze main</p></blockquote>
+
+<p>The same can be done using a FTP server. All you have to do is to make the symbolic link in FTP&#8217;s configured path and use ftp:// instead of http:// in /etc/apt/source.lst. Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A sudoku checking program in C :)]]></title>
+    <link href="http://ershad.github.com/blog/2011/04/09/a-sudoku-checking-program-in-c/"/>
+    <updated>2011-04-09T21:57:47+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/04/09/a-sudoku-checking-program-in-c</id>
+    <content type="html"><![CDATA[<p>It just started when my younger bro, Shafeeq who reads <a href="http://news.ycombinator.com/">hacker news</a> everyday, found a little interesting blog post. It was about the authors experience in applying for an internship at Google. The candidate was asked to write a program to check a completed sudoku during the telephone interview for errors, in his favorite programming language. I asked bro, &#8220;Why don&#8217;t you give it a try?!&#8221;. He&#8217;s now in 11th standard and started coding in C++ which he learns in Computer Science subject. He came up with the code in one day, and then it was my turn to do that :) Here&#8217;s the way I solved the problem and it&#8217;s in pure C.</p>
+
+<p>You can find the code <a href="https://github.com/ershad/checksudoku/blob/master/checksudoku.c">here, in github</a>. The input is given as a plain text file that contains 9x9 numbers separated by space. A sample input is given below:</p>
+
+<blockquote><p>7 2 3 8 4 6 1 5 9
+6 1 5 3 9 2 4 7 8
+8 4 9 7 1 5 6 3 2
+3 7 8 6 5 4 9 2 1
+1 9 4 2 8 7 3 6 5
+2 5 6 9 3 1 8 4 7
+5 6 1 4 7 9 2 8 3
+4 8 7 1 2 3 5 9 6
+9 3 2 5 6 8 7 1 4</p></blockquote>
+
+<p>And to check for errors, please call the program with the file as argument, like this -</p>
+
+<blockquote><p>$checksudoku <data_file></p></blockquote>
+
+<p>Hope you enjoyed it, Please go through the code and feel free to post your valuable comments and suggestions here. Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The little twitter client I use :)]]></title>
+    <link href="http://ershad.github.com/blog/2011/03/13/the-little-twitter-client-i-use/"/>
+    <updated>2011-03-13T05:15:44+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/03/13/the-little-twitter-client-i-use</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s a small python script to update and read tweets from different timelines. You can use it with head/tail commands to customize the output.  Actually, I wrote this script just for personal use and now I would like to share it with you :) Thanks to tweepy python module, make sure it&#8217;s installed before trying the script :)</p>
+
+<pre><code>#!/usr/bin/env python
+# Copyright 2011 Ershad K &lt;ershad92@[nospam]gmail.com&gt;
+# Licensed under GPL Version 3
+
+import sys
+import tweepy
+
+CONSUMER_KEY = ' Fill here'
+CONSUMER_SECRET = ' File here too'
+ACCESS_KEY = ' Type yours here'
+ACCESS_SECRET = 'Type yours here too'
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+api = tweepy.API(auth)
+
+if sys.argv[1] == 'u':
+    api.update_status(sys.argv[2])
+
+elif sys.argv[1] == 'p':
+    public_tweets = api.public_timeline()
+    for tweet in public_tweets:
+        print tweet.user.screen_name,":",tweet.text
+        print ""
+
+elif sys.argv[1] == 'r':
+    mention_tweets = api.mentions()
+    for mtweet in mention_tweets:
+        print mtweet.user.screen_name,":",mtweet.text
+        print ""
+
+elif sys.argv[1] == 'h':
+    friends_tweets = api.home_timeline()
+    for ftweet in friends_tweets:
+        print ftweet.user.screen_name,":", ftweet.text
+        print ""
+</code></pre>
+
+<p>Hope you like it :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python Script to fix VBR errors of mp3 files in a directory, recursively ]]></title>
+    <link href="http://ershad.github.com/blog/2011/02/19/python-script-to-fix-vbr-errors-of-mp3-files-in-a-directory-recursively/"/>
+    <updated>2011-02-19T23:07:18+05:30</updated>
+    <id>http://ershad.github.com/blog/2011/02/19/python-script-to-fix-vbr-errors-of-mp3-files-in-a-directory-recursively</id>
+    <content type="html"><![CDATA[<p>If the seek bar of your rhythmbox is not working with some mp3 files, it might be an issue with Variable Bit Rate of them. The tool, &#8216;vbrfix&#8217; written by William Pye solves the issue, but the problem is that it doesn&#8217;t have an option to search for files recursively. Here is a small python script that gets the paths of multiple mp3 files recursively and give them as arguments to vbrfix tool. Make sure you install vbrfix (from the software repo) before running the script.</p>
+
+<p>Please see comments for a better, 1 line substitute to do the same. Thanks to Rajeesh ettan and Syam ettan :)</p>
+
+<pre><code>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#       vbrfixdir.py
+#
+#       Copyright 2011 Ershad K &lt;ershad92@gmail.com&gt;  
+#
+#       Usage: python vbrfixdir.py
+#
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#       GNU General Public License for more details.
+#
+#       You should have received a copy of the GNU General Public License
+#       along with this program; if not, write to the Free Software
+#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#       MA 02110-1301, USA.
+
+import sys
+import os
+
+quote = '"'
+folder = sys.argv[1]
+find_command = "find " + folder
+find_command += " &gt; mp3files_list"
+
+os.system(find_command)
+os.system("sed 1d mp3files_list &gt; mp3files_list1");
+
+f = open("mp3files_list1", 'r')
+for line in f:
+    line = line[:len(line)-1]
+    command = "vbrfix -always "
+    command += quote + line + quote
+    command += " " + quote + line + quote
+    print command
+    os.system(command)
+
+os.system("rm mp3files_list mp3files_list1")
+</code></pre>
+
+<p>Improvements to code and suggestions are always welcome, Happy Hacking :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A simple square pattern in C++]]></title>
+    <link href="http://ershad.github.com/blog/2010/07/29/a-simple-square-pattern-in-c/"/>
+    <updated>2010-07-29T01:30:32+05:30</updated>
+    <id>http://ershad.github.com/blog/2010/07/29/a-simple-square-pattern-in-c</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s a small C++ program which outputs a square pattern according to the size entered. Code is given below :</p>
+
+<p>[sourcecode language=&#8221;cpp&#8221; light=&#8221;true&#8221;]</p>
+
+<p>/<em>
+* sqpattern.cpp
+*
+* Copyright 2010 Ershad K ershad92@gmail.com
+* Licensed under GPL Version 3
+*
+* To compile - g++ -o sqpattern sqpattern.cpp
+* To execute - ./sqpattern
+</em>/</p>
+
+<h1>include <iostream></h1>
+
+<p>using namespace std;</p>
+
+<p>int main()
+{
+  int size;
+  cout &lt;&lt; &#8220;Enter size: &#8220;;
+  cin >> size;</p>
+
+<p>  int count = 1;
+  cout &lt;&lt; &#8221; &#8220;;
+  while (count++ &lt; size) cout &lt;&lt; &#8221; _&#8221;;</p>
+
+<p>  for (int i = 1; i &lt; size; i++)</p>
+
+<pre><code>{
+  int numOfCharsPerLine = 0;
+  cout &lt;&lt; "n";
+  for (int j = 0; j &lt; i; j++)
+    {
+      cout &lt;&lt; " |";
+      numOfCharsPerLine += 2;
+    }
+
+  cout &lt;&lt; "_";
+  numOfCharsPerLine += 1;
+
+  int k = 1;
+  while (k++ &lt; (size*2) - numOfCharsPerLine )
+  cout &lt;&lt; " ";
+  cout &lt;&lt; "|";
+}
+</code></pre>
+
+<p>  count = 1;
+  cout &lt;&lt; &#8220;n &#8220;;
+  while (count++ &lt;= (size)-1 ) cout &lt;&lt; &#8220;|_&#8221;;</p>
+
+<p>  cout &lt;&lt; &#8220;|n&#8221;;</p>
+
+<p>return 0;
+}</p>
+
+<p>[/sourcecode]</p>
+
+<p>Output:</p>
+
+<p><a href="http://ershadk.com/blog/wp-content/uploads/2010/07/screenshot.png"><img src="http://ershadk.com/blog/wp-content/uploads/2010/07/screenshot.png" alt="" /></a>The programs draws squares of any size entered. The code needs improvement, please feel free to give suggestions. Click <a href="http://github.com/ershad/Experiments.cpp">here</a> for &#8216;experiments&#8217; git repo. Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to download .deb packages for offline installation]]></title>
+    <link href="http://ershad.github.com/blog/2010/06/13/how-to-download-deb-packages-for-offline-installation-2/"/>
+    <updated>2010-06-13T17:12:36+05:30</updated>
+    <id>http://ershad.github.com/blog/2010/06/13/how-to-download-deb-packages-for-offline-installation-2</id>
+    <content type="html"><![CDATA[<p>Some of my friends always complain that they are not able download packages due to Internet availability issues or usage limit. Most of them are using different Ubuntu versions, hence I cannot use APTonCD to download the packages for them. Here&#8217;s a small solution for this, Thanks to ilug-tvm and Rajeesh ettan.</p>
+
+<p>Step 1: Get the download URLs in a file :</p>
+
+<p>Execute the following command replacing <code>package-names</code> with required ones, separating by a space.</p>
+
+<blockquote><p><code>$apt-get -y install --print-uris package-name | cut -d\' -f2 | grep http:// &gt; apturls</code></p></blockquote>
+
+<p>Step 2: Copy this file (apturls) to a machine which has high-speed Internet access, and execute the following command to download the packages:</p>
+
+<blockquote><p><code>$wget -i path-to-apturls-file</code></p></blockquote>
+
+<p>Step 3: Now get those downloaded packages to your machine, and install them using :</p>
+
+<blockquote><p><code>$cd path-to-the-downloaded-packages-directory</code></p></blockquote>
+
+<p>$sudo dpkg -i *.deb</p>
+
+<p>Done!</p>
+
+<p>Thank you, Good Luck :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python Script to backup tweets]]></title>
+    <link href="http://ershad.github.com/blog/2010/06/06/python-script-to-backup-tweets/"/>
+    <updated>2010-06-06T03:25:20+05:30</updated>
+    <id>http://ershad.github.com/blog/2010/06/06/python-script-to-backup-tweets</id>
+    <content type="html"><![CDATA[<p>It was some conversations in Twitter with @aashiks and @geohacker that made me write this script. The conversation goes like this:</p>
+
+<pre><code>&lt;em&gt;
+geohacker : What is the best way to archive my twitter timeline?
+           I think I'm loosing several precious tweets! #help #please
+ershus : Copy-paste ? ;)
+aashiks : @geohacker ask @ershus to write a python script and
+           retrieve data using the twitter api
+ershus : @aashiks My god!   !  .....
+            PS: ,  :) ( @geohacker )
+aashiks : @geohacker - kandallo ? thats how you do it :D
+            @ershus vegam V0.1 erakku :D
+&lt;/em&gt;
+</code></pre>
+
+<p>Well, this little script is born! Thanks to them, else I would not have written anything like this.</p>
+
+<p>This is my first &#8216;working&#8217; python script and I&#8217;m very happy to share with you. I&#8217;ve just started using python, you may be able to suggest a lot of improvements in the code. Please help me by pointing out the mistakes and other suggestions.</p>
+
+<p>This script uses <a href="http://code.google.com/p/python-twitter/">python-twitter</a> library, please make sure it&#8217;s installed before running the code.</p>
+
+<p>Thanks to <a href="http://rajeeshknambiar.wordpress.com/">Rajeesh ettan</a> who helped me with unicode issues and time.sleep() :)</p>
+
+<p>Here&#8217;s the code:</p>
+
+<pre><code>#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# pyTweetBackUp.py
+# Version 1.0
+#
+# Copyright (C) 2010 - Ershad K   ershad92@gmail.com
+#
+# Licensed under GPL Version 3
+
+import os, sys, codecs
+import time
+import twitter
+
+# Change the following values
+username = 'USERNAME'
+password = 'PASSWORD'
+backup_file = 'twitterbackfile' #File name or Path + File name
+sleep_time = 5 #seconds
+
+fout = codecs.open(backup_file, 'a') #to create such a file
+api = twitter.Api(username, password)
+
+while (True):
+    time.sleep(sleep_time)
+    timeline = api.GetFriendsTimeline(username)
+    for s in timeline:
+        #print "%st%s" % (s.user.name, s.text)
+        tweet = s.user.name + "t" + s.text
+        fin = open(backup_file, 'r')
+        x = fin.read()
+        y = x.find(tweet.encode("utf-8"))
+        fin.close()
+
+        if y &lt; 0:
+            fout = codecs.open(backup_file, 'a')
+            text = s.user.name + "t" + s.text + "n"
+            fout.write(text.encode("utf-8"))
+            fout.close()
+</code></pre>
+
+<p>Thank you :)</p>
+]]></content>
+  </entry>
+  
+</feed>

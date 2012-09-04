@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C++ | Syntax]]></title>
+  <link href="http://ershad.github.com/blog/categories/c-/atom.xml" rel="self"/>
+  <link href="http://ershad.github.com/"/>
+  <updated>2012-09-05T00:00:24+05:30</updated>
+  <id>http://ershad.github.com/</id>
+  <author>
+    <name><![CDATA[Ershad K]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A simple square pattern in C++]]></title>
+    <link href="http://ershad.github.com/blog/2010/07/29/a-simple-square-pattern-in-c/"/>
+    <updated>2010-07-29T01:30:32+05:30</updated>
+    <id>http://ershad.github.com/blog/2010/07/29/a-simple-square-pattern-in-c</id>
+    <content type="html"><![CDATA[<p>Here's a small C++ program which outputs a square pattern according to the size entered. Code is given below :</p>
+
+<p>[sourcecode language="cpp" light="true"]</p>
+
+<p>/<em>
+* sqpattern.cpp
+*
+* Copyright 2010 Ershad K ershad92@gmail.com
+* Licensed under GPL Version 3
+*
+* To compile - g++ -o sqpattern sqpattern.cpp
+* To execute - ./sqpattern
+</em>/</p>
+
+<h1>include <iostream></h1>
+
+<p>using namespace std;</p>
+
+<p>int main()
+{
+  int size;
+  cout &lt;&lt; "Enter size: ";
+  cin >> size;</p>
+
+<p>  int count = 1;
+  cout &lt;&lt; " ";
+  while (count++ &lt; size) cout &lt;&lt; " _";</p>
+
+<p>  for (int i = 1; i &lt; size; i++)</p>
+
+<pre><code>{
+  int numOfCharsPerLine = 0;
+  cout &lt;&lt; "n";
+  for (int j = 0; j &lt; i; j++)
+    {
+      cout &lt;&lt; " |";
+      numOfCharsPerLine += 2;
+    }
+
+  cout &lt;&lt; "_";
+  numOfCharsPerLine += 1;
+
+  int k = 1;
+  while (k++ &lt; (size*2) - numOfCharsPerLine )
+  cout &lt;&lt; " ";
+  cout &lt;&lt; "|";
+}
+</code></pre>
+
+<p>  count = 1;
+  cout &lt;&lt; "n ";
+  while (count++ &lt;= (size)-1 ) cout &lt;&lt; "|_";</p>
+
+<p>  cout &lt;&lt; "|n";</p>
+
+<p>return 0;
+}</p>
+
+<p>[/sourcecode]</p>
+
+<p>Output:</p>
+
+<p><a href="http://ershadk.com/blog/wp-content/uploads/2010/07/screenshot.png"><img src="http://ershadk.com/blog/wp-content/uploads/2010/07/screenshot.png" alt="" /></a>The programs draws squares of any size entered. The code needs improvement, please feel free to give suggestions. Click <a href="http://github.com/ershad/Experiments.cpp">here</a> for 'experiments' git repo. Thank you :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Configure Gmail in Mutt easily!]]></title>
+    <link href="http://ershad.github.com/blog/2010/04/22/configure-gmail-in-mutt-easily/"/>
+    <updated>2010-04-22T04:45:06+05:30</updated>
+    <id>http://ershad.github.com/blog/2010/04/22/configure-gmail-in-mutt-easily</id>
+    <content type="html"><![CDATA[<p>It's always wonderful to play with terminal. Last week, I tried to configure my Gmail account in mutt, a powerful console based mail client, using <a href="http://www.andrews-corner.org/mutt.html">this</a> tutorial. I had to create some configuration files for various related applications and executed some commands. Hence I thought it would be nice if there is any script/program to configure mutt easily by simply entering the Gmail ID and password. Here is such an application, written in C++, which will help you to configure mutt very easily. All that you need to do is install mutt and follow these steps :</p>
+
+<ol>
+<li>Download <a href="http://www.mediafire.com/?jz5drhuqw4l">this</a> file</li>
+<li>Exctract it to your home directory</li>
+<li>Execute the following commands :</li>
+</ol>
+
+
+<blockquote><p>$cd muttgconf
+$./muttgconf</p></blockquote>
+
+<p>VERY IMPORTANT: THE PROGRAM CREATES / MODIFIES MANY CONFIGURATION FILES. I WILL NOT BE RESPONSIBLE FOR ANY DAMAGE OR LOSS CAUSED BY THIS APPLICATION. USE IT UNDER YOUR RISK.</p>
+
+<p>Get its source from git://github.com/ershad/Mutt-Gmail-Conf.git  Good luck :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Salt Analysis Simulator V1.0 - Released!]]></title>
+    <link href="http://ershad.github.com/blog/2010/01/17/salt-analysis-simulator-v1-0-released/"/>
+    <updated>2010-01-17T03:19:42+05:30</updated>
+    <id>http://ershad.github.com/blog/2010/01/17/salt-analysis-simulator-v1-0-released</id>
+    <content type="html"><![CDATA[<p>For the past few weeks, I have been coding to bring out a program to do salt analysis lab work virtually. We have salt Analysis as a part of plus two academics and it is a process of finding the anion and cation which the salt contain through a systematic procedure. We add many reagents / acids throughout the labwork and analyse the result to identify the anion and cation. I hope this program would help students to practice salt analysis at their home and would feel confident!</p>
+
+<p>The program is completely written in C++ and is intended to work on M$ DO$ platform, becuase more students are using M$ Platform including Biology-science group students. Another techincal reason is that, I have used clrscr(), gotoxy() and getchar() many times which is a troublesome work to implement in ANSI standard.</p>
+
+<p>The program works based on a new algorithm which I name it as "IntMatchReact" since the reaction process is done through a matching of integer values. While developing this software, I had a notion to implement anti-piracy for fun which was left on the way. The software is licensed under GPL and I would like you to go through the code and help in improving.</p>
+
+<p>Please post your valuable comments and improvement tips. Thank you :)</p>
+
+<p>Get SAS V1.0  <a href="http://www.mediafire.com/?j324zxddzy4">(here)</a></p>
+
+<p>Bug: i forgot to add exit function for 'e' key stroke, have exams now - will upload SAS with minor corrections soon :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C++ Program to tweet]]></title>
+    <link href="http://ershad.github.com/blog/2009/09/20/c-program-to-tweet/"/>
+    <updated>2009-09-20T16:41:59+05:30</updated>
+    <id>http://ershad.github.com/blog/2009/09/20/c-program-to-tweet</id>
+    <content type="html"><![CDATA[<p>It's very interesting to play with C++ and if it is in GNU/Linux, lots of tools like 'wget', 'grep',etc. are there to help us in time. Here is a simple C++ snippet which tweets directly to your time line. Feel free to add more features and would be great if you could share it with me too :)</p>
+
+<blockquote><pre><code>/*
+ *      shell-tweet.cpp
+ *
+ *      Copyright 2009 Ershad K  ershad92@gmail.com
+ *      Licensed under GPL Version 3
+ *
+ *      Please change USERNAME, PASSWORD and compile with g++
+ *      To compile - g++ shell-tweet.cpp
+ *      To execute - ./a.out
+ */
+</code></pre>
+
+<h1>include <iostream></h1>
+
+<h1>include &lt;string.h></h1>
+
+<h1>include &lt;stdlib.h></h1></blockquote>
+
+<p>using namespace std;</p>
+
+<p>int main()
+{
+char name[] = "username", password[] = "password", status[500], cmd[500];</p>
+
+<p>char sym[] = {char(34),''};</p>
+
+<p>again: cout &lt;&lt; "n Status: ";
+fgets (status,140,stdin);</p>
+
+<p>cout &lt;&lt; "n Length = " &lt;&lt; strlen(status);</p>
+
+<p>if (strlen(status) > 139)
+{
+cout &lt;&lt; " Exceeds 140 character limit, Type again n";
+goto again;
+}
+else
+{</p>
+
+<p>strcpy(cmd,"wget -nv --keep-session-cookies --http-user=");</p>
+
+<p>strcat(cmd,name);
+strcat(cmd," --http-password=");
+strcat(cmd,password);
+strcat(cmd," --post-data=");
+strcat(cmd,sym);
+strcat(cmd,"status=");
+strcat(cmd,status);
+strcat(cmd,sym);
+strcat(cmd," http://twitter.com:80/statuses/update.xml");</p>
+
+<p>system(cmd);</p>
+
+<p>cout &lt;&lt; "n Done";
+}
+return 0;
+}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Easy Clarity - Connect Easily!]]></title>
+    <link href="http://ershad.github.com/blog/2009/09/05/easy-clarity-connect-easily/"/>
+    <updated>2009-09-05T14:51:26+05:30</updated>
+    <id>http://ershad.github.com/blog/2009/09/05/easy-clarity-connect-easily</id>
+    <content type="html"><![CDATA[<p>'Disconnection' is a routine process in dial up internet. Here is an C++ snippet which dials BSNL WLL Clarity without asking for password again and again. It automatically closes on disconnection with a beep sound.</p>
+
+<pre><code>/*
+ *      easyclarity.cpp
+ *
+ *      Copyright 2009 Ershad K  ershad92@gmail.com
+ *      Licensed under GPL Version 3
+ *
+ *      Please change USERNAME, PASSWORD and compile with g++
+ *      To compile - g++ easyclarity.cpp
+ *      To execute - ./a.out
+ */
+
+#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+using namespace std;
+
+int main ()
+{
+    char username[] = "USERNAME";
+    char password[] = "PASSWORD";
+    puts("n EasyClarity - Connect wisely!  www.ershadk.wordpress.comnn");
+    ofstream myfile;
+    system("sudo wvdialconf");
+    myfile.open ("/etc/widial.conf");
+        myfile &lt;&lt; "[Dialer Defaults]nInit1 = ATZnInit2 = ATQ0 V1 E1 S0=0 "
+               &lt;&lt; "&amp;C1 &amp;D2 +FCLASS=0nInit3 = at+crm=1;+cmux=1;+cps=33;+cta=0"
+               &lt;&lt; "nModem Type = Analog ModemnISDN = 0nPhone = #777nModem"
+               &lt;&lt; " = /dev/ttyUSB0nUsername = "&lt;&lt;username&lt;&lt;"nPassword = "
+               &lt;&lt;password&lt;&lt;"nBaud = 460800nStupid Mode = 1nAuto DNSnCheck"
+                &lt;&lt;" Def Route";
+    myfile.close();
+    system("sudo wvdial");
+    cout &lt;&lt; "a";
+    return 0;
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

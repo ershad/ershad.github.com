@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Irssi notification in terminal using 'write command' - Syntax</title>
+  <meta name="author" content="Ershad K">
+
+  
+  <meta name="description" content="In Desktop Environments like KDE or GNOME, we have special libraries like knotify or libnotify to display notifications from various applications. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ershad.github.com/blog/2010/05/10/irssi-notification-in-terminal-using-write-command/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Syntax" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Syntax</a></h1>
+  
+    <h2>A blog of life and technology</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ershad.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Irssi Notification in Terminal Using 'Write Command'</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-10T16:24:00+05:30" pubdate data-updated="true">May 10<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In Desktop Environments like KDE or GNOME, we have special libraries like knotify or libnotify to display notifications from various applications. Some applications like Konversation has its own notification systems. But what about command line tools like Irssi? Imagine you are chatting in tty1 using irssi and doing something in tty2.How will you know if someone has mentioned you nick in channel message? Well, here is a small solution for this.</p>
+
+<p><a href="http://lewk.org/blog/2006/05/19/irssi-notify">Luke Macken</a> has written a wonderful perl script to display notifications using notify-send command in desktop environments. Thanks to open source, I tweaked the call to notify-send command to suit our tty-notification. All that you have to do is this :</p>
+
+<p>Step 1 : <a href="http://lewk.org/blog/2006/05/19/irssi-notify">Get</a> the Script and write it to a file &#8216;notify.pl&#8217;.</p>
+
+<p>Step 2 : Replace</p>
+
+<blockquote><p>system(&#8220;notify-send -i gtk-dialog-info -t 5000 &#8216;$dest->{target}&#8217; &#8216;$stripped&#8217;&#8221;);</p></blockquote>
+
+<p>With</p>
+
+<blockquote><p>system(&#8220;echo &#8216;$dest->{target}&#8217; &#8216;$stripped&#8217; | write <Your username>&#8221;);</p></blockquote>
+
+<p>Make sure you replace <Your username> with your system username.</p>
+
+<p>Step 3 : Put it in ~/.irssi/scripts/ directory.</p>
+
+<p>Step 4 : Execute the following commands in irssi:</p>
+
+<blockquote><p>/load perl
+/script load notify</p></blockquote>
+
+<p>Done, you will get notification to the latest tty to which you are logged in!
+Good luck :)</p>
+
+<p>PS: The notification that you get is not eye-candy, please adjust for it now :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ershad K</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-10T16:24:00+05:30" pubdate data-updated="true">May 10<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/experiments/'>Experiments</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ershad.github.com/blog/2010/05/10/irssi-notification-in-terminal-using-write-command/" data-via="" data-counturl="http://ershad.github.com/blog/2010/05/10/irssi-notification-in-terminal-using-write-command/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/04/22/configure-gmail-in-mutt-easily/" title="Previous Post: Configure Gmail in Mutt easily!">&laquo; Configure Gmail in Mutt easily!</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/06/06/python-script-to-backup-tweets/" title="Next Post: Python Script to backup tweets">Python Script to backup tweets &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/31/releasing-myfest-in-a-web-app-to-find-and-share-campus-fest-and-events/">Releasing myfest.in - A web app to find and share campus fest and events!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/10/fix-for-rails-3-x-x-error-fatal-failed-to-allocate-memory-in-os-x-lion/">Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/06/set-up-rails-3-2-2-with-passenger-rvm-and-ngnix/">Set up Rails 3.2.2 with Passenger, rvm and ngnix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/python-script-for-automatic-synchronisation-of-read-it-later-list-and-webpage/">Python script for automatic synchronisation of 'Read it later' list and webpage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/13/a-python-script-to-generate-sql-queries-for-importing-linksblogroll-in-another-wordpress-blog/">A python script to generate SQL queries for importing links/blogroll in another wordpress blog</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Ershad K -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
